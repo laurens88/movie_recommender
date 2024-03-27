@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "App for movie recommendations",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "debug": "^4.3.4",
     "express": "^4.19.2",
+    "express-jwt": "^8.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.3",
     "morgan": "^1.10.0"
   }
 }
