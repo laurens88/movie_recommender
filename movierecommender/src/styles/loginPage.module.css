@@ -1,0 +1,10 @@
+.h1 {
+    text-align: center;
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.page {
+    background-image: linear-gradient(to bottom right, #394847, #3742A2);
+}

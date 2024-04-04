@@ -1,23 +1,33 @@
 import {React, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/loginForm.module.css';
+import TransparentInput from './transparentInput';
 
-function LoginForm() {
-  useEffect(() => {
-    document.title = 'Login';
-  }, []);  
+function LoginForm() { 
+  let navigate = useNavigate();
 
+  function goToSignUp() {
+    navigate('/signup');
+  }
+
+  function goToHome() {
+    navigate('/home');
+  }
   return (
-    <form className={styles.loginForm}>
+    <>
+    <form className={styles.form}>
       <label>
-        Username or Email:
-        <input type="text" name="username/email" />
+        {/* <input className={styles.transparent_input} type="text" name="username/email" placeholder='Username or Email' /> */}
+        <TransparentInput name='username/email' placeholder='Username or Email' />
       </label>
       <label>
-        Password:
-        <input type="password" name="password" />
+        <TransparentInput name='password' type='password' placeholder='Password' />
       </label>
-      <button type="submit">Submit</button>
+      <button className={styles.buttons} onClick={goToHome} type="submit">Login</button>
+      <button className={styles.buttons} onClick={goToSignUp} type="button">Sign up</button>
     </form>
+    
+    </>
   );
 }
 
