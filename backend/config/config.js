@@ -1,18 +1,15 @@
 let config;
-// config = {
-//     server: {
-//         port: 8080,
-//         keySecret: "HARD_TO_GUESS"
-//     }
-// }
-if (process.env.NODE_ENV == "test" || process.env.NODE_ENV == "development") {
-    config = {
-        server: {
-            port: 8080,
-            keySecret: "HARD_TO_GUESS",
-        }
-    };
-} else if (process.env.NODE_ENV == "production") {
+config = {
+    server: {
+        port: 8080,
+        keySecret: "HARD_TO_GUESS",
+    },
+    mongodb: {
+        dbURI: "mongodb://127.0.0.1:27017/newmedialab"
+    }
+};
+
+if(process.env.NODE_ENV == "production") {
     config = {
         server: {
             port: 8080,
@@ -27,10 +24,6 @@ if (process.env.NODE_ENV == "test" || process.env.NODE_ENV == "development") {
             connLimit: 5,
         },
     };
-} else {
-    // console.log(err);
-    console.log("Failed to read config.");
-    process.exit(1);
 }
 
 module.exports = {

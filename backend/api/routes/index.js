@@ -5,16 +5,14 @@ console.log(expressJwt);
 
 const authentication = expressJwt.expressjwt({
     secret: "ShhItsASecret",
-    userProperty: "payload",
+    requestProperty: "user",
     algorithms: ["HS256"],
 });
 
 const router = express.Router();
 
-
-
 // Api to get user details
-router.get("/users/:username", authentication, ctrlUsers.getUser);
+router.get("/users", authentication, ctrlUsers.getUser);
 
 // Api to add user
 router.post("/users", ctrlUsers.addUser);

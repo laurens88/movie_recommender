@@ -33,9 +33,6 @@ UserSchema.methods.generateJwt = function () {
     const expiryDate = new Date();
     expiryDate.setDate(expiryDate.getDate() + 10);
     let role = "user";
-    if(this.username === "admin") {
-        role = "admin";
-    }
 
     return jwt.sign(
         {

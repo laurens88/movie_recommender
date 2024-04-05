@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
+const { config } = require("./config");
 
-var dbURI = "mongodb://127.0.0.1:27017/newmedialab";
+var dbURI = config.mongodb.dbURI;
 
 if (process.env.NODE_ENV === "production") {
     dbURI = process.env.MONGODB_CLOUD_URI;
 } else if (process.env.NODE_ENV === "docker") {
     dbURI = "mongodb://sp-pettany-mongod/newmedialab";
 }
+
 console.log(process.env.NODE_ENV);
 console.log(dbURI);
 mongoose.connect(dbURI);

@@ -4,6 +4,7 @@ require('../models/userModel');
 require('../models/userProfileModel');
 const UserModel = mongoose.model("User");
 const UserProfileModel = mongoose.model("UserProfile");
+const ObjectID = mongoose.Types.ObjectId;
 
 // const getUser = (req, res) => {
 //     res.send({ id: req.params.id, name: "John Doe", age: 25 })
@@ -48,7 +49,10 @@ const addUser = (req, res) => {
 
 // Define the getUser function
 const getUser = (req, res) => {
-    UserProfileModel.findOne({username: req.params.username})
+    const loggedInUsername = req.user.username; // Extract username from JWT payload
+    console.log("HERE")
+
+    UserProfileModel.findOne({username: loggedInUsername})
         .then((user) => {
             if (!user) {
                 res.status(404).json("User not found");
@@ -62,7 +66,7 @@ const getUser = (req, res) => {
 }
 
 const getUserById = (req, res) => {
-    UserProfileModel.findById(req.params.id)
+    UserProfileModel.findById(new ObjectID(req.user._id))
         .then((user) => {
             if (!user) {
                 res.status(404).json("User not found");
@@ -103,47 +107,9 @@ const signIn = (req, res) => {
         });
 }
 
-// const addUser = (req, res) => {
-//     if (!req.body.username || !req.body.password || !req.body.firstName ||
-//         !req.body.lastName || !req.body.dateOfBirth || !req.body.numberOfPets || !req.body.location ||
-//         !req.body.email) {
-//         res.redirect("/error");
-//     }
-//     else {
-//         const newUser = new UserModel({
-//             username: req.body.username,
-//             password: req.body.password
-//         })
-//
-//         const newUserProfile = new UserProfileModel({
-//             firstName: req.body.firstName,
-//             lastName: req.body.lastName,
-//             username: req.body.username,
-//             dateOfBirth: req.body.dateOfBirth,
-//             numberOfPets: req.body.numberOfPets,
-//             location: req.body.location,
-//             email: req.body.email,
-//             previousAds: 0
-//         })
-//
-//         newUserProfile.save(function(error) {
-//             if(error) {
-//                 res.status(400).json(error);
-//             } else {
-//                 newUser.save(function(error) {
-//                     if(error) {
-//                         res.status(400).json(error);
-//                     } else {
-//                         res.status(201).json("Success");
-//                     }
-//                 })
-//             }
-//         })
-//     }
-// };
-
 module.exports = {
     getUser,
     addUser,
-    signIn
+    signIn,
+    getUserById
 }
