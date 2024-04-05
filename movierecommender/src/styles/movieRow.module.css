@@ -1,0 +1,13 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.title {
+    padding-left: 20px;
+    color: white;
+}

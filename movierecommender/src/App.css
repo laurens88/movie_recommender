@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.BodyBackground{
+  background-image: linear-gradient(to bottom right, #394847, #3742A2);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}

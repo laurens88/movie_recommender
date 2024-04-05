@@ -1,0 +1,11 @@
+.h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 20px;
+    color: white;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}

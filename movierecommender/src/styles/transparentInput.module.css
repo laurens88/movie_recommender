@@ -9,3 +9,7 @@
     width: 300px;
     text-align: center;
   }
+
+  .transparent_input::placeholder {
+    color: #d4d4d4;
+  }
