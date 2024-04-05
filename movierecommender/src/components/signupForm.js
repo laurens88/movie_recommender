@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TransparentInput from './transparentInput';
 import styles from '../styles/form.module.css';
 import { useNavigate } from 'react-router-dom';
