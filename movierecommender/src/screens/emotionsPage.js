@@ -1,6 +1,7 @@
 import {React, useEffect} from 'react';
 import '../App.css';
 import styles from '../styles/emotionsPage.module.css';
+import TransparentInput from '../components/transparentInput';
 
 
 function EmotionsPage() {
@@ -13,7 +14,8 @@ function EmotionsPage() {
     }, []);
     return (
         <div>
-            <h1 className={styles.h1}>How do you feel</h1>
+            <h1 className={styles.h1}>Tell us how you're feeling</h1>
+            <TransparentInput placeholder="I'm feeling..." />
         </div>
     );
 }

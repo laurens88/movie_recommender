@@ -11,7 +11,7 @@ function RecommendationsPage() {
     }, []);
     return (
         <div>
-            <h1>Recommendations</h1>
+            <h1>Movies we believe you may like</h1>
         </div>
     );
 }

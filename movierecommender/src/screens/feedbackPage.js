@@ -1,5 +1,6 @@
 import {React, useEffect, useState} from 'react';
 import '../App.css';
+import styles from '../styles/feedbackPage.module.css';
 
 function FeedbackPage() {
     useEffect(() => {
@@ -11,7 +12,8 @@ function FeedbackPage() {
     }, []);
     return (
         <div>
-            <h1>Feedback</h1>
+            <h1 className={styles.h1}>Now that you've seen the movie...</h1>
+            <slider />
         </div>
     );
 }

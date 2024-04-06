@@ -1,5 +1,7 @@
 import {React, useEffect} from 'react';
 import '../App.css';
+import styles from '../styles/categoriesPage.module.css';
+import PrettyButton from '../components/prettyButton';
 
 function CategoriesPage() {
     useEffect(() => {
@@ -11,7 +13,36 @@ function CategoriesPage() {
     }, []);
     return (
         <div>
-            <h1>Categories</h1>
+            <h1 className={styles.h1}>Which if these categories do you like?</h1>
+            <PrettyButton 
+                text="Insightful"
+                width='200px' 
+                height='150px' 
+                fontSize='25px' 
+                color="#3742A2"
+            />
+            <PrettyButton 
+                text="Informative"
+                width='200px' 
+                height='150px' 
+                fontSize='25px' 
+                color="#3742A2"
+            />
+            <PrettyButton 
+                text="Sad"
+                width='200px' 
+                height='150px' 
+                fontSize='25px' 
+                color="#3742A2"
+            />
+            <PrettyButton 
+                text="No preference"
+                width='200px' 
+                height='150px' 
+                fontSize='25px' 
+                color="#3742A2"
+            />
+            
         </div>
     );
 }

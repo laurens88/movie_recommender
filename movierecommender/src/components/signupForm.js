@@ -2,6 +2,7 @@ import React from 'react';
 import TransparentInput from './transparentInput';
 import styles from '../styles/form.module.css';
 import { useNavigate } from 'react-router-dom';
+import PrettyButton from './prettyButton';
 
 function SignupForm() {
     let navigate = useNavigate();
@@ -17,7 +18,8 @@ function SignupForm() {
         <TransparentInput name='email' placeholder='Email' />
         <TransparentInput name='password' type='password' placeholder='Password' />
         <TransparentInput name='repeatpassword' type='password' placeholder='Repeat password' />
-        <button className={styles.centerButton} onClick={goToHome} type="submit">Sign Up</button>
+        <PrettyButton text='Sign up' width='110px' height='40px' fontSize='12px' color='#3742A2' onClick={goToHome}/>
+
     </form>
     </>
     );
