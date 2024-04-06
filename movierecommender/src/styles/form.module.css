@@ -13,8 +13,8 @@
 
 .button{
   display: flex;
-  flex-direction: row;
-  /* align-items: stretch; */
+  flex-direction: space-between;
+  align-items: stretch;
   /* justify-content: space-between; Aligns one button to the left and the other to the right */
   /* margin-top: 10px; Add space between inputs and buttons, adjust as needed */
 }
