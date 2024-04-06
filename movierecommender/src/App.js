@@ -4,9 +4,10 @@ import './App.css';
 import LoginPage from './screens/loginPage';
 import SignupPage from './screens/signupPage';
 import HomePage from './screens/homePage';
-//import RecommendationsPage from './screens/recommendationsPage';
-//import EmotionsPage from './screens/emotionsPage';
-//import FeedbackPage from './screens/feedbackPage';
+import EmotionsPage from './screens/emotionsPage';
+import CategoriesPage from './screens/categoriesPage';
+import RecommendationsPage from './screens/recommendationsPage';
+import FeedbackPage from './screens/feedbackPage';
 
 
 function App() {
@@ -17,9 +18,10 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage/>} />
           <Route path="/home" element={<HomePage/>} />
-          <Route path="/recommendations" element={<h1>Recommendations</h1>} />
-          <Route path="/emotions" element={<h1>How do you feel</h1>} />
-          <Route path="/feedback" element={<h1>Feedback</h1>} />
+          <Route path="/emotions" element={<EmotionsPage />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/recommendations" element={<RecommendationsPage />} />
+          <Route path="/feedback" element={<FeedbackPage />} />
         </Routes>
     </Router>
   );
