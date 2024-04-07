@@ -2,8 +2,12 @@ import {React, useEffect} from 'react';
 import '../App.css';
 import styles from '../styles/categoriesPage.module.css';
 import PrettyButton from '../components/prettyButton';
+import { useAuth } from '../contexts/AuthContext';
+
+
 
 function CategoriesPage() {
+
     useEffect(() => {
         document.title = 'Categories';
         document.body.classList.add('BodyBackground');

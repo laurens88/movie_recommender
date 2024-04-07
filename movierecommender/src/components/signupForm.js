@@ -32,14 +32,14 @@ function SignupForm() {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8080/api/register', {
+            const response = await axios.post('http://localhost:8080/api/users', {
                 username,
                 password,
                 email,
-                name,
+                firstName: name,
             });
-            console.log('Sign in successful:', response.data);
-            navigate('/home');
+            console.log('Sign up successful:', response.data);
+            navigate('/signin');
             // Handle successful sign-in (e.g., redirect user)
         } catch (error) {
             if (error.response) {
