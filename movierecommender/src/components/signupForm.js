@@ -18,7 +18,7 @@ function SignupForm() {
         <TransparentInput name='email' placeholder='Email' />
         <TransparentInput name='password' type='password' placeholder='Password' />
         <TransparentInput name='repeatpassword' type='password' placeholder='Repeat password' />
-        <PrettyButton text='Sign up' width='110px' height='40px' fontSize='12px' color='#3742A2' onClick={goToHome}/>
+        <PrettyButton text='Sign up' width='110px' height='40px' fontSize='12px' color='#A7C7E7' onClick={goToHome}/>
 
     </form>
     </>

@@ -4,3 +4,9 @@
     margin-bottom: 1rem;
     color: #ffffff;
 }
+
+.inputField {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}

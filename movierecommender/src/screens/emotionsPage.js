@@ -13,9 +13,9 @@ function EmotionsPage() {
     };
     }, []);
     return (
-        <div>
+        <div className={styles.inputField}>
             <h1 className={styles.h1}>Tell us how you're feeling</h1>
-            <TransparentInput placeholder="I'm feeling..." />
+            <TransparentInput className={styles.inputField} placeholder="I'm feeling..." />
         </div>
     );
 }
