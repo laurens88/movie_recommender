@@ -14,26 +14,41 @@ function CategoriesPage() {
     return (
         <div>
             <h1 className={styles.h1}>Which if these categories do you like?</h1>
+            <h3 className={styles.h3}>Select atleast one</h3>
             <PrettyButton 
-                text="Insightful"
+                text="Uplifting"
                 width='200px' 
                 height='150px' 
                 fontSize='25px' 
-                color="#3742A2"
+                color="#A7C7E7"
             />
             <PrettyButton 
-                text="Informative"
+                text="Inspiring"
                 width='200px' 
                 height='150px' 
                 fontSize='25px' 
-                color="#3742A2"
+                color="#A7C7E7"
+            />
+            <PrettyButton 
+                text="Hopeful"
+                width='200px' 
+                height='150px' 
+                fontSize='25px' 
+                color="#A7C7E7"
             />
             <PrettyButton 
                 text="Sad"
                 width='200px' 
                 height='150px' 
                 fontSize='25px' 
-                color="#3742A2"
+                color="#A7C7E7"
+            />
+            <PrettyButton 
+                text="Informative"
+                width='200px' 
+                height='150px' 
+                fontSize='25px' 
+                color="#A7C7E7"
             />
             <PrettyButton 
                 text="No preference"
