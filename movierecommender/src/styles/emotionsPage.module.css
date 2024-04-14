@@ -5,6 +5,20 @@
     color: #ffffff;
 }
 
+.h3 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.h6 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
 .inputField {
     display: flex;
     justify-content: center;

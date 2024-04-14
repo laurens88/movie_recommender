@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect} from "react";
 import "../App.css";
 import styles from "../styles/feedbackPage.module.css";
 import PrettySlider from "../components/slider";
