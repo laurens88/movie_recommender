@@ -2,6 +2,8 @@ import { React, useEffect, useState } from "react";
 import "../App.css";
 import styles from "../styles/feedbackPage.module.css";
 import PrettySlider from "../components/slider";
+import TransparentInput from "../components/transparentInput";
+import PrettyButton from "../components/prettyButton";
 
 function FeedbackPage() {
   useEffect(() => {
@@ -20,9 +22,11 @@ function FeedbackPage() {
       </h4>
         <PrettySlider />
       <h4 className={styles.h4}> You chose a [] movie, was that accurate?</h4>
-
+      <PrettySlider />
       <h4 className={styles.h4}> Was the movie meaningful to you?</h4>
-      <slider />
+      <PrettySlider />
+      <TransparentInput type="text" placeholder="(Optional): Any additional feedback?" />
+      <PrettyButton text="Submit" width="110px" height="40px" fontSize="12px" color="#A7C7E7" />
     </div>
   );
 }
