@@ -1,8 +1,9 @@
 .h1 {
-    font-size: 5rem;
+    display: flex;
+    font-size: 5vw;
     margin-bottom: 1rem;
-    padding-left: 20px;
     color: white;
+    justify-content: center;
 }
 
 .h2 {
@@ -13,10 +14,11 @@
 }
 
 .h3 {
-    font-size: 3rem;
+    font-size: 3vw;
     margin-bottom: 1rem;
-    padding-left: 20px;
     color: white;
+    display: flex;
+    justify-content: center;
 }
 
 .h4 {
