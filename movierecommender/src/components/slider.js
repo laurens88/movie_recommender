@@ -3,7 +3,7 @@ import Slider from "@mui/material/Slider";
 
 function PrettySlider() {
   return (
-    <div>
+    <div style={{display: "flex" , justifyContent: "center"}}>
       <Slider
         defaultValue={50}
         aria-label="pretto slider"
@@ -12,7 +12,7 @@ function PrettySlider() {
         marks
         min={10}
         max={100}
-        style={{ color: "#A7C7E7" }}
+        style={{ color: "#A7C7E7", width: "60%"}}
       />
     </div>
   );

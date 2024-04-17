@@ -6,7 +6,7 @@
     text-decoration: #ffffff;
     margin: 10px;
     padding: 10px;
-    width: 300px;
+    width: min(300px,60vw);
     text-align: center;
   }
 

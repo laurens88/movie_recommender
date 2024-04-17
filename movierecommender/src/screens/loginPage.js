@@ -14,7 +14,9 @@ function LoginPage() {
   }, []); 
   return (
     <div>
-      <img src="/logo.svg" style={{ width: '200px', height: '200px', paddingLeft: '43.5vw', paddingTop: '10vh'}}/>
+      <div className={styles.logoContainer}>
+      <img src='../logo.svg' alt="Logo" />
+      </div>
       <h1 className={styles.h1}>Movie Recommender</h1>
       <LoginForm />
     </div>

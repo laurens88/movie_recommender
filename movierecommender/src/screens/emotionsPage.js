@@ -3,6 +3,7 @@ import "../App.css";
 import styles from "../styles/emotionsPage.module.css";
 import TransparentInput from "../components/transparentInput";
 import PrettyButton from "../components/prettyButton";
+import Grid from '@mui/material/Grid';
 
 function EmotionsPage() {
   useEffect(() => {
@@ -24,7 +25,10 @@ function EmotionsPage() {
         <PrettyButton text="Next" width="110px" height="40px" fontSize="12px" color="#A7C7E7" />
       </div>
       <h3 className={styles.h3}>Suggestions</h3>
-      <div className={styles.suggestions}>
+
+      <Grid container spacing={1}>
+
+        <Grid item lg='2' md='6'>
         <PrettyButton
           text="Sad"
           width="110px"
@@ -32,6 +36,9 @@ function EmotionsPage() {
           fontSize="12px"
           color="#A7C7E7"
         />
+        </Grid>
+
+        <Grid item lg='2' md='6'>
         <PrettyButton
           text="Happy"
           width="110px"
@@ -39,6 +46,9 @@ function EmotionsPage() {
           fontSize="12px"
           color="#A7C7E7"
         />
+        </Grid>
+
+        <Grid item lg='2' md='6'>
         <PrettyButton
           text="Angry"
           width="110px"
@@ -46,6 +56,9 @@ function EmotionsPage() {
           fontSize="12px"
           color="#A7C7E7"
         />
+        </Grid>
+
+        <Grid item lg='2' md='6'>
         <PrettyButton
           text="Curious"
           width="110px"
@@ -53,6 +66,9 @@ function EmotionsPage() {
           fontSize="12px"
           color="#A7C7E7"
         />
+        </Grid>
+
+        <Grid item lg='2' md='6'>
         <PrettyButton
           text="Bored"
           width="110px"
@@ -60,7 +76,9 @@ function EmotionsPage() {
           fontSize="12px"
           color="#A7C7E7"
         />
-      </div>
+        </Grid>
+
+      </Grid>
     </div>
   );
 }

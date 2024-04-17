@@ -1,22 +1,35 @@
 .h1 {
-    text-align: center;
-    font-size: 5rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    font-size: 5vw;
+    color: white;
+}
+
+.h2 {
+    font-size: 4vw;
+    color: white;
 }
 
 .h3 {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    font-size: 3vw;
+    color: white;
+}
+
+.h4 {
+    font-size: 2vw;
+    color: white;
+}
+
+.h5 {
+    font-size: 1vw;
+    color: white;
 }
 
 .h6 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
+    font-size: 0.75vw;
+    color: white;
 }
 
 .inputField {

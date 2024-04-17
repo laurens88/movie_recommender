@@ -1,41 +1,31 @@
 .h1 {
-    font-size: 5rem;
-    margin-bottom: 1rem;
-    padding-left: 20px;
+    font-size: 5vw;
+    display: flex;
+    justify-content: center;
     color: white;
 }
 
 .h2 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    padding-left: 20px;
+    font-size: 4vw;
     color: white;
 }
 
 .h3 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    padding-left: 20px;
+    font-size: 3vw;
     color: white;
 }
 
 .h4 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    padding-left: 20px;
+    font-size: 2vw;
     color: white;
 }
 
 .h5 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    padding-left: 20px;
+    font-size: 1vw;
     color: white;
 }
 
 .h6 {
-    font-size: 0.75rem;
-    margin-bottom: 1rem;
-    padding-left: 20px;
+    font-size: 0.75vw;
     color: white;
 }

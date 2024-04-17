@@ -3,18 +3,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
 }
-/* .centerButton {
-  justify-content: center;
-  flex-direction: row;
-  margin-top: 10px;
-} */
 
 .button{
   display: flex;
   flex-direction: space-between;
   align-items: stretch;
-  /* justify-content: space-between; Aligns one button to the left and the other to the right */
-  /* margin-top: 10px; Add space between inputs and buttons, adjust as needed */
 }
