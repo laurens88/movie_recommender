@@ -2,6 +2,7 @@
     font-size: 5vw;
     margin-bottom: 1rem;
     color: white;
+    margin-left: 1%;
 }
 
 .h2 {
@@ -37,4 +38,17 @@
 .button {
     display: flex;
     justify-content: center;
+}
+
+.nextMovie {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.currentlyWatching {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
 }

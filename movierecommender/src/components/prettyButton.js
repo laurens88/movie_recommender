@@ -1,13 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import { darken } from '@mui/material/styles';
 
 function PrettyButton(props) {
+    const { text, width, height, fontSize, color, onClick } = props;
+    const usedColor = color ? color : '#A7C7E7';
+
+    const [isActive, setIsActive] = useState(false);
+
+    const toggleButton = () => {
+        setIsActive(!isActive);
+    }
+
     return (
         <Button 
         variant="contained"
             color="primary"
-            onClick={props.onClick}
+            onClick={onClick? onClick: toggleButton}
             sx={{
                 marginTop: {
                     xs: '10px',  // On extra-small devices
@@ -16,16 +25,16 @@ function PrettyButton(props) {
                     lg: '25px',  // On large devices
                     xl: '30px'   // On extra-large devices
                 },
-                backgroundColor: props.color,
+                backgroundColor: isActive? darken(usedColor, 0.4): usedColor,
                 '&:hover': {
-                    backgroundColor: darken(props.color, 0.2), // Slightly darker for the hover state
+                    backgroundColor: darken(usedColor, 0.2), // Slightly darker for the hover state
                   },
-                width: props.width,
-                height: props.height,
-                fontSize: props.fontSize, 
+                width: width ? width : 'auto',
+                height: height ? height : 'auto',
+                fontSize: fontSize, 
             }}
             >
-            {props.text}
+            {text}
         </Button>
     );
 }

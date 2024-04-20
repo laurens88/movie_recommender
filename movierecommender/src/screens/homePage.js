@@ -4,8 +4,24 @@ import styles from '../styles/homePage.module.css';
 import "../App.css";
 import MovieBlock from "../components/movieBlock";
 import PrettyButton from "../components/prettyButton";
+import { useNavigate } from 'react-router-dom';
 
 function HomePage() {
+
+    let navigate = useNavigate();
+
+    function goToMoviePage() {
+        
+    }
+
+    function goToFeedbackPage() {
+        navigate('/feedback');
+    }
+
+    function goToEmotionPage() {
+        navigate('/emotions');
+    }
+
     useEffect(() => {
         document.title = 'Movie Recommender';
         document.body.classList.add('BodyBackground');
@@ -17,10 +33,14 @@ function HomePage() {
     return (
         <div>
         <h1 className={styles.h1}>Welcome, </h1>
-        <PrettyButton text='Find your next movie' width='110px' height='40px' fontSize='12px' color='#A7C7E7'/>
+        <div className={styles.nextMovie}>
+        <PrettyButton text='Find your next movie' fontSize='12px' color='#A7C7E7' onClick={goToEmotionPage}/>
+        </div>
+        <div className={styles.currentlyWatching}>
         <h5 className={styles.h5}>Currently watching...</h5>
         <MovieBlock />
-        <h6 className={styles.h6}>Feedback?</h6>
+        <PrettyButton text='Give feedback' fontSize='12px' color='#A7C7E7' onClick={goToFeedbackPage}/>
+        </div>
 
         <MovieRow title="Favorites" />
         <MovieRow title="My list" />

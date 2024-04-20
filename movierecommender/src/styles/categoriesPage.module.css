@@ -1,7 +1,6 @@
 .h1 {
     display: flex;
     font-size: 5vw;
-    margin-bottom: 1rem;
     color: white;
     justify-content: center;
 }
@@ -10,7 +9,7 @@
     font-size: 4vw;
     display: flex;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     color: white;
 }
 
@@ -43,5 +42,5 @@
 .buttonContainer {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 10vw;
+    margin-top: 1vw;
 }

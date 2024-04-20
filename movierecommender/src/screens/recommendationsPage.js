@@ -3,6 +3,7 @@ import styles from "../styles/recommendationsPage.module.css";
 import MovieRow from "../components/movieRow";
 import PrettyButton from "../components/prettyButton";
 import "../App.css";
+import { useNavigate } from 'react-router-dom';
 
 function RecommendationsPage() {
   useEffect(() => {

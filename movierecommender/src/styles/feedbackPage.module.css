@@ -35,3 +35,10 @@
     font-size: 0.75vw;
     color: white;
 }
+
+.feedbackSubmission {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}

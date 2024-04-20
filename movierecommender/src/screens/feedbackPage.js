@@ -4,8 +4,15 @@ import styles from "../styles/feedbackPage.module.css";
 import PrettySlider from "../components/slider";
 import TransparentInput from "../components/transparentInput";
 import PrettyButton from "../components/prettyButton";
+import { useNavigate } from 'react-router-dom';
 
 function FeedbackPage() {
+  let navigate = useNavigate();
+
+  function goToHomePage() {
+    navigate('/');
+  }
+
   useEffect(() => {
     document.title = "Feedback";
     document.body.classList.add("BodyBackground");
@@ -22,8 +29,10 @@ function FeedbackPage() {
       <PrettySlider />
       <h3 className={styles.h3}> Was the movie meaningful to you?</h3>
       <PrettySlider />
+      <div className={styles.feedbackSubmission}>
       <TransparentInput type="text" placeholder="(Optional): Any additional feedback?" />
-      <PrettyButton text="Submit" width="110px" height="40px" fontSize="12px" color="#A7C7E7" />
+      <PrettyButton text="Submit" fontSize="12px" color="#A7C7E7" onClick={goToHomePage}/>
+      </div>
     </div>
   );
 }

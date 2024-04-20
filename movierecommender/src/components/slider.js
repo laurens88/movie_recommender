@@ -10,7 +10,7 @@ function PrettySlider() {
         valueLabelDisplay="auto"
         step={10}
         marks
-        min={10}
+        min={0}
         max={100}
         style={{ color: "#A7C7E7", width: "60%"}}
       />

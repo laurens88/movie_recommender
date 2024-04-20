@@ -5,7 +5,8 @@ function TransparentInput(props) {
     const { type = 'text' } = props;
   return (
     <>
-    <input className={styles.transparent_input} type={props.type} name={props.name} placeholder={props.placeholder} />
+    <input className={styles.transparent_input} type={props.type} name={props.name} placeholder={props.placeholder} 
+    />
     </>
   );
 }

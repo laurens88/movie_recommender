@@ -4,8 +4,15 @@ import styles from '../styles/categoriesPage.module.css';
 import PrettyButton from '../components/prettyButton';
 import Tooltip from '@mui/material/Tooltip';
 import Grid from '@mui/material/Grid';
+import { useNavigate } from 'react-router-dom';
 
 function CategoriesPage() {
+    let navigate = useNavigate();
+
+    function goToRecommendationsPage() {
+        navigate('/recommendations');
+    }
+
     useEffect(() => {
         document.title = 'Categories';
         document.body.classList.add('BodyBackground');
@@ -15,9 +22,9 @@ function CategoriesPage() {
     }, []);
     return (
         <div>
-            <h1 className={styles.h1}>Which if these categories do you like?</h1>
+            <h1 className={styles.h1}>Which of these categories do you like?</h1>
             <h2 className={styles.h2}>Select at least one</h2>
-            <Grid container spacing={4} justifyContent="center">
+            <Grid container spacing={2} justifyContent="center">
             <Grid item lg={4} sm={6} xs={6} display="flex" justifyContent="center">
             <Tooltip title="Movies such as: " placement='bottom'>
             <PrettyButton
@@ -25,7 +32,6 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)' 
-                color="#A7C7E7"
             />
             </Tooltip>
             </Grid>
@@ -36,7 +42,6 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)' 
-                color="#A7C7E7"
             />
             </Grid>
 
@@ -46,7 +51,6 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)' 
-                color="#A7C7E7"
             />
             </Grid>
 
@@ -56,7 +60,6 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)' 
-                color="#A7C7E7"
             />
             </Grid>
 
@@ -66,7 +69,6 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)' 
-                color="#A7C7E7"
             />
             </Grid>
 
@@ -76,14 +78,13 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)' 
-                color="#A7C7E7"
             />
             </Grid>
             </Grid>
 
             <div className={styles.buttonContainer}>
-            <PrettyButton text='No preference' width='min(30vw, 200px)' height='min(25vw, 75px)' fontSize='min(4vw, 25px)' color='#3742A2' link='/emotions'/>
-            <PrettyButton text='Next' width='min(30vw, 200px)' height='min(25vw, 75px)' fontSize='min(4vw, 25px)' color='#A7C7E7' link='/emotions'/>
+            <PrettyButton text='No preference' width='min(30vw, 200px)' height='min(25vw, 75px)' fontSize='min(4vw, 25px)' color='#3742A2' onClick={goToRecommendationsPage}/>
+            <PrettyButton text='Next' width='min(30vw, 200px)' height='min(25vw, 75px)' fontSize='min(4vw, 25px)' onClick={goToRecommendationsPage}/>
             </div>
         </div>
     );

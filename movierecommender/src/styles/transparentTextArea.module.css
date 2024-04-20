@@ -1,4 +1,4 @@
-.transparent_input {
+.transparent_area {
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
     border-bottom: 2px solid #ffffff;
@@ -11,6 +11,6 @@
     text-align: center;
   }
 
-  .transparent_input::placeholder {
+  .transparent_area::placeholder {
     color: #d4d4d4;
   }
