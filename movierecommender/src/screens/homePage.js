@@ -5,7 +5,6 @@ import "../App.css";
 import MovieBlock from "../components/movieBlock";
 import PrettyButton from "../components/prettyButton";
 import { useNavigate } from 'react-router-dom';
-import {useNavigate} from "react-router-dom";
 import {useAuth} from "../contexts/AuthContext";
 
 function HomePage() {
@@ -54,7 +53,6 @@ function HomePage() {
         <PrettyButton text='Give feedback' fontSize='12px' color='#A7C7E7' onClick={goToFeedbackPage}/>
         </div>
 
-        <div>
         <MovieRow title="Favorites" />
         <MovieRow title="My list" />
         <MovieRow title="Watched before" />
