@@ -8,10 +8,12 @@ import EmotionsPage from './screens/emotionsPage';
 import CategoriesPage from './screens/categoriesPage';
 import RecommendationsPage from './screens/recommendationsPage';
 import FeedbackPage from './screens/feedbackPage';
+import {AuthProvider} from "./contexts/AuthContext";
 
 
 function App() {
   return (
+      <AuthProvider>
     <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -24,6 +26,7 @@ function App() {
           <Route path="/feedback" element={<FeedbackPage />} />
         </Routes>
     </Router>
+        </AuthProvider>
   );
 }
 
