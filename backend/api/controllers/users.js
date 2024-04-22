@@ -2,8 +2,10 @@
 const mongoose = require("mongoose");
 require('../models/userModel');
 require('../models/userProfileModel');
+require("../models/movieModel");
 const UserModel = mongoose.model("User");
 const UserProfileModel = mongoose.model("UserProfile");
+const MovieModel = mongoose.model("Movie");
 const ObjectID = mongoose.Types.ObjectId;
 
 // const getUser = (req, res) => {
@@ -11,7 +13,9 @@ const ObjectID = mongoose.Types.ObjectId;
 // };
 
 const addUser = (req, res) => {
+    console.log("HEREEEE");
     if (!req.body.username || !req.body.password || !req.body.firstName || !req.body.email) {
+
         console.log(req.body.username);
         console.log(req.body.password);
         console.log(req.body.firstName);
@@ -91,7 +95,18 @@ const signIn = (req, res) => {
                     .then((isMatch) => {
                         if (isMatch) {
                             console.log("HERE")
-                            res.status(200).json({token: user.generateJwt()});
+                            UserProfileModel.findOne({username: req.body.username})
+                                .then((userProfile) => {
+                                    if (!userProfile) {
+                                        res.status(404).json("User not found");
+                                    } else {
+                                        res.status(200).json({token: user.generateJwt(userProfile.firstName)});
+                                    }
+                                })
+                                .catch((error) => {
+                                    res.status(400).json(error);
+                                });
+
                         } else {
                             console.log("HERE")
                             res.status(401).json("Unauthorized");
@@ -107,9 +122,188 @@ const signIn = (req, res) => {
         });
 }
 
+// Get favorite movies
+
+const getFavoriteMovies = (req, res) => {
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                // Fetch the favorite movies from the database using the movie IDs
+                MovieModel.find({id: {$in: user.favoriteMovies}})
+                    .then((movies) => {
+                        res.status(200).json(movies);
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+}
+
+const getWatchedMovies = (req, res) => {
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                // Fetch the favorite movies from the database using the movie IDs
+                MovieModel.find({id: {$in: user.watchedMovies}})
+                    .then((movies) => {
+                        res.status(200).json(movies);
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+}
+
+const getWatchlist = (req, res) => {
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                // Fetch the favorite movies from the database using the movie IDs
+                MovieModel.find({id: {$in: user.watchlist}})
+                    .then((movies) => {
+                        res.status(200).json(movies);
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+}
+
+const getCurrentlyWatching = (req, res) => {
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                // Fetch the favorite movies from the database using the movie IDs
+                MovieModel.find({id: {$in: user.currentlyWatching}})
+                    .then((movies) => {
+                        res.status(200).json(movies);
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+}
+
+const addFavoriteMovie = (req, res) => {
+    console.log(req.user)
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                user.favoriteMovies.push(req.params.id);
+                user.save()
+                    .then(() => {
+                        res.status(200).json("Success");
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+}
+
+const addWatchedMovie = (req, res) => {
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                user.watchedMovies.push(req.params.id);
+                user.save()
+                    .then(() => {
+                        res.status(200).json("Success");
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+}
+
+const addWatchlistMovie = (req, res) => {
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                user.watchlist.push(req.params.id);
+                user.save()
+                    .then(() => {
+                        res.status(200).json("Success");
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+}
+
+const addCurrentlyWatchingMovie = (req, res) => {
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                user.currentlyWatching.push(req.params.id);
+                user.save()
+                    .then(() => {
+                        res.status(200).json("Success");
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+}
+
 module.exports = {
     getUser,
     addUser,
     signIn,
-    getUserById
+    getUserById,
+    getFavoriteMovies,
+    getWatchedMovies,
+    getWatchlist,
+    getCurrentlyWatching,
+    addFavoriteMovie,
+    addWatchedMovie,
+    addWatchlistMovie,
+    addCurrentlyWatchingMovie
 }

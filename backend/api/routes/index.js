@@ -1,5 +1,6 @@
 const express = require("express");
 const ctrlUsers = require("../controllers/users");
+const ctrlMovies = require("../controllers/movies");
 const expressJwt = require("express-jwt")
 console.log(expressJwt);
 
@@ -20,7 +21,23 @@ router.post("/users", ctrlUsers.addUser);
 // Sign in
 router.post("/signin", ctrlUsers.signIn);
 
+router.get("/movies/:id", ctrlMovies.getMovie);
 
+router.get("/users/favorites", authentication, ctrlUsers.getFavoriteMovies);
+
+router.get("/users/watched", authentication, ctrlUsers.getWatchedMovies);
+
+router.get("/users/watchlist", authentication, ctrlUsers.getWatchlist);
+
+router.get("/users/currentlywatching", authentication, ctrlUsers.getCurrentlyWatching);
+
+router.post("/users/favorites/:id", authentication, ctrlUsers.addFavoriteMovie);
+
+router.post("/users/watched/:id", authentication, ctrlUsers.addWatchedMovie);
+
+router.post("/users/watchlist/:id", authentication, ctrlUsers.addWatchlistMovie);
+
+router.post("/users/currentlywatching/:id", authentication, ctrlUsers.addCurrentlyWatchingMovie);
 
 module.exports = router;
 

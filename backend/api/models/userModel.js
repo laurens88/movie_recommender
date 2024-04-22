@@ -29,7 +29,7 @@ UserSchema.methods.comparePassword = function(password) {
     return bcrypt.compare(password, this.password);
 }
 
-UserSchema.methods.generateJwt = function () {
+UserSchema.methods.generateJwt = function (firstName) {
     const expiryDate = new Date();
     expiryDate.setDate(expiryDate.getDate() + 10);
     let role = "user";
@@ -39,7 +39,8 @@ UserSchema.methods.generateJwt = function () {
             _id: this._id,
             username: this.username,
             exp: parseInt(expiryDate.getTime() / 1000),
-            role: role
+            role: role,
+            firstName: firstName
         },
         "ShhItsASecret"
     );
