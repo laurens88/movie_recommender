@@ -21,6 +21,11 @@ router.post("/users", ctrlUsers.addUser);
 // Sign in
 router.post("/signin", ctrlUsers.signIn);
 
+router.get("/movies/recommendations", (req, res, next) => {
+    console.log('Recommendations route hit');
+    next();
+}, authentication, ctrlMovies.getRecommendations);
+
 router.get("/movies/:id", ctrlMovies.getMovie);
 
 router.get("/users/favorites", authentication, ctrlUsers.getFavoriteMovies);
