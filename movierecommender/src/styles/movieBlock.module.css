@@ -1,0 +1,33 @@
+.movieBlock {
+    flex-shrink: 0;
+    position: relative;
+
+}
+
+.movieBlock img:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Change as needed */
+    border: 1px solid #000; /* Change as needed */
+}
+
+.movieBlock img {
+    width: 100%;
+    height: 80%;
+    object-fit: contain;
+    transition: all 0.3s ease
+}
+
+.movieBlock .movieDetails {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    color: #fff; /* White text */
+    width: 100%;
+    padding: 10px;
+    overflow-wrap: break-word; /* This will break words at the end of the line */
+    white-space: normal; /* This will break lines according to normal line breaking rules */
+}
+
+.movieBlock:hover .movieDetails {
+    display: block;
+}
