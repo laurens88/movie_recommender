@@ -37,3 +37,7 @@
     justify-content: center;
     margin-top: 2rem;
 }
+
+.centeredGrid {
+    margin: 0 auto;
+}

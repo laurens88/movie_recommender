@@ -17,6 +17,7 @@ function TextArea(props) {
       }}
       placeholder= {props.placeholder}
       onChange={props.onChange}  // Assuming you want to handle changes
+      value={props.value}        // Assuming you want to display a value
     />
   );
 }
