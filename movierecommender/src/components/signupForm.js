@@ -65,7 +65,7 @@ function SignupForm() {
                 <TransparentInput name='repeatpassword' type='password' placeholder='Repeat password'
                                   value={repeatPassword} onChange={(e) => setRepeatPassword(e.target.value)}/>
                 {errorMessage && <p>{errorMessage}</p>}
-                <PrettyButton text='Sign up' width='110px' height='40px' fontSize='12px' color='#3742A2'
+                <PrettyButton text='Sign up' width='110px' height='40px' fontSize='12px' color='#A7C7E7'
                               onClick={handleSignUp}/>
 
             </form>

@@ -41,13 +41,11 @@ function HomePage() {
     }, [isValid, token]);
     return (
         <div>
-        <h1 className={styles.h1}>Welcome, </h1>
+        <h1 className={styles.h1}>Welcome, {isValid ? (token.firstName) : ('')}</h1>
         <div className={styles.nextMovie}>
         <PrettyButton text='Find your next movie' fontSize='12px' color='#A7C7E7' onClick={goToEmotionPage}/>
         </div>
         <div className={styles.currentlyWatching}>
-        <h1 className={styles.h1}>Welcome, {isValid ? (token.firstName) : ('')}</h1>
-        <PrettyButton text='Find your next movie' width='110px' height='40px' fontSize='12px' color='#A7C7E7'/>
         <h5 className={styles.h5}>Currently watching...</h5>
         <MovieBlock />
         <PrettyButton text='Give feedback' fontSize='12px' color='#A7C7E7' onClick={goToFeedbackPage}/>
