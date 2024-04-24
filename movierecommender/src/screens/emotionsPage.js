@@ -13,7 +13,7 @@ function EmotionsPage() {
   const [prompt, setPrompt] = useState("");
 
   function goToCategoriesPage() {
-    navigate("/categories");
+    navigate("/categories", { state: { prompt: prompt } });
   }
 
   const handleChange = (e) => {

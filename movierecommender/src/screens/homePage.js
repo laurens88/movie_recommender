@@ -117,9 +117,9 @@ function HomePage() {
         </div>
             )}
 
-            <MovieRow title="Favorites" movies={favoriteMovies} />
-            <MovieRow title="My list" movies={watchlist}/>
-            <MovieRow title="Watched before" movies={watchedMovies} />
+            <MovieRow title="Favorites" movies={favoriteMovies} click={false}/>
+            <MovieRow title="My list" movies={watchlist} click={false}/>
+            <MovieRow title="Watched before" movies={watchedMovies} click={false} />
         </div>
     );
     }

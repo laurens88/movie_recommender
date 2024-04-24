@@ -1,16 +1,23 @@
-import {React, useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import '../App.css';
 import styles from '../styles/categoriesPage.module.css';
 import PrettyButton from '../components/prettyButton';
 import Tooltip from '@mui/material/Tooltip';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+
+// Inside your component
 
 function CategoriesPage() {
     let navigate = useNavigate();
+    const location = useLocation();
+    const prompt = location.state.prompt;
+    const [selectedCategories, setSelectedCategories] = useState([]);
 
     function goToRecommendationsPage() {
-        navigate('/recommendations');
+        // console.log(selectedCategories)
+        navigate('/recommendations', {state: {prompt: prompt, categories: selectedCategories}});
     }
 
     useEffect(() => {
@@ -31,7 +38,8 @@ function CategoriesPage() {
                 text="Uplifting"
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
-                fontSize='min(4vw, 25px)' 
+                fontSize='min(4vw, 25px)'
+                onClick={() => setSelectedCategories([...selectedCategories, 'Uplifting'])}
             />
             </Tooltip>
             </Grid>
@@ -41,7 +49,8 @@ function CategoriesPage() {
                 text="Inspiring"
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
-                fontSize='min(4vw, 25px)' 
+                fontSize='min(4vw, 25px)'
+                onClick={() => setSelectedCategories([...selectedCategories, 'Inspiring'])}
             />
             </Grid>
 
@@ -50,7 +59,8 @@ function CategoriesPage() {
                 text="Hopeful"
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
-                fontSize='min(4vw, 25px)' 
+                fontSize='min(4vw, 25px)'
+                onClick={() => setSelectedCategories([...selectedCategories, 'Hopeful'])}
             />
             </Grid>
 
@@ -59,7 +69,8 @@ function CategoriesPage() {
                 text="Sad"
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
-                fontSize='min(4vw, 25px)' 
+                fontSize='min(4vw, 25px)'
+                onClick={() => setSelectedCategories([...selectedCategories, 'Sad'])}
             />
             </Grid>
 
@@ -68,7 +79,8 @@ function CategoriesPage() {
                 text="Informative"
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
-                fontSize='min(4vw, 25px)' 
+                fontSize='min(4vw, 25px)'
+                onClick={() => setSelectedCategories([...selectedCategories, 'Informative'])}
             />
             </Grid>
 
@@ -77,13 +89,14 @@ function CategoriesPage() {
                 text="Character growth"
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
-                fontSize='min(4vw, 25px)' 
+                fontSize='min(4vw, 25px)'
+                onClick={() => setSelectedCategories([...selectedCategories, 'Character growth'])}
             />
             </Grid>
             </Grid>
 
             <div className={styles.buttonContainer}>
-            <PrettyButton text='No preference' width='min(30vw, 200px)' height='min(25vw, 75px)' fontSize='min(4vw, 25px)' color='#3742A2' onClick={goToRecommendationsPage}/>
+            <PrettyButton text='No preference' width='min(30vw, 200px)' height='min(25vw, 75px)' fontSize='min(4vw, 25px)' color='#3742A2'  onClick={() => setSelectedCategories([])}/>
             <PrettyButton text='Next' width='min(30vw, 200px)' height='min(25vw, 75px)' fontSize='min(4vw, 25px)' onClick={goToRecommendationsPage}/>
             </div>
         </div>
