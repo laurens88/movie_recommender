@@ -20,20 +20,19 @@ function MovieBlock(props) {
                 }
             }).then(r => {
                 console.log('Removed movie from currently watching');
+                axios.post(`http://localhost:8080/api/users/currentlywatching/${movie.id}`, {},  {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                }).then(response => {
+                    navigate('/home');
+                })
+                    .catch(error => {
+                        console.error('Error adding movie to currently watching:', error);
+                    });
             }).catch(e => {
                 console.error('Error removing movie from currently watching:', e);
             });
 
             // add movie to currently watching
-            axios.post(`http://localhost:8080/api/users/currentlywatching/${movie.id}`, {},  {
-                headers: { 'Authorization': `Bearer ${token}` }
-            }).then(response => {})
-                .catch(error => {
-                    console.error('Error adding movie to currently watching:', error);
-                });
-
-            navigate('/home');
-
     }};
 
     return (
