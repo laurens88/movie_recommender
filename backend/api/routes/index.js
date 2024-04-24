@@ -36,6 +36,8 @@ router.get("/users/watchlist", authentication, ctrlUsers.getWatchlist);
 
 router.get("/users/currentlywatching", authentication, ctrlUsers.getCurrentlyWatching);
 
+router.delete("/users/currentlywatching", authentication, ctrlUsers.removeCurrentlyWatching);
+
 router.post("/users/favorites/:id", authentication, ctrlUsers.addFavoriteMovie);
 
 router.post("/users/watched/:id", authentication, ctrlUsers.addWatchedMovie);

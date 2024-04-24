@@ -293,6 +293,31 @@ const addCurrentlyWatchingMovie = (req, res) => {
         });
 }
 
+
+// remove the last movie from the list
+
+const removeCurrentlyWatching = (req, res) => {
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                user.currentlyWatching.pop();
+                user.save()
+                    .then(() => {
+                        res.status(200).json("Success");
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+
+}
+
 module.exports = {
     getUser,
     addUser,
@@ -305,5 +330,6 @@ module.exports = {
     addFavoriteMovie,
     addWatchedMovie,
     addWatchlistMovie,
-    addCurrentlyWatchingMovie
+    addCurrentlyWatchingMovie,
+    removeCurrentlyWatching
 }
