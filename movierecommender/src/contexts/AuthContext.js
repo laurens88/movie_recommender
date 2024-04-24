@@ -5,6 +5,7 @@ const AuthContext = createContext(undefined);
 
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(null);
+    const [decodedToken, setDecodedToken] = useState(null);
     const [isValid, setIsValid] = useState(false);
     const [loading, setLoading] = useState(true);
 
@@ -16,7 +17,8 @@ export const AuthProvider = ({ children }) => {
                 const currentTime = Date.now() / 1000;
 
                 if (decodedToken.exp > currentTime) {
-                    setToken(decodedToken);
+                    setToken(storedToken);
+                    setDecodedToken(decodedToken);
                     setIsValid(true);
                     console.log(decodedToken)
                 } else {
@@ -35,7 +37,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ token, isValid }}>
+        <AuthContext.Provider value={{ token, decodedToken, isValid }}>
             {children}
         </AuthContext.Provider>
     );
