@@ -27,3 +27,10 @@
     font-size: 0.75vw;
     color: white;
 }
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2vw;
+}

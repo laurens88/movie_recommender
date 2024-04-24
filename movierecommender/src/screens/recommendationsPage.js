@@ -18,6 +18,7 @@ function RecommendationsPage() {
       <h1 className={styles.h1}>Movies we believe you may like</h1>
       <MovieRow />
       <MovieRow />
+      <div className={styles.buttonContainer}>
       <PrettyButton
         text="Back"
         width="200px"
@@ -32,6 +33,7 @@ function RecommendationsPage() {
         fontSize="25px"
         color="#A7C7E7"
       />
+      </div>
     </div>
   );
 }
