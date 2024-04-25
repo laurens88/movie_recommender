@@ -39,7 +39,7 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)'
-                onClick={() => setSelectedCategories([...selectedCategories, 'Uplifting'])}
+                onClick={() => setSelectedCategories([...selectedCategories, 'uplifting'])}
             />
             </Tooltip>
             </Grid>
@@ -50,7 +50,7 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)'
-                onClick={() => setSelectedCategories([...selectedCategories, 'Inspiring'])}
+                onClick={() => setSelectedCategories([...selectedCategories, 'inspiring'])}
             />
             </Grid>
 
@@ -60,7 +60,7 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)'
-                onClick={() => setSelectedCategories([...selectedCategories, 'Hopeful'])}
+                onClick={() => setSelectedCategories([...selectedCategories, 'hopeful'])}
             />
             </Grid>
 
@@ -70,7 +70,7 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)'
-                onClick={() => setSelectedCategories([...selectedCategories, 'Sad'])}
+                onClick={() => setSelectedCategories([...selectedCategories, 'sad'])}
             />
             </Grid>
 
@@ -80,7 +80,7 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)'
-                onClick={() => setSelectedCategories([...selectedCategories, 'Informative'])}
+                onClick={() => setSelectedCategories([...selectedCategories, 'informative'])}
             />
             </Grid>
 
@@ -90,7 +90,7 @@ function CategoriesPage() {
                 width='min(30vw, 200px)'
                 height='min(25vw, 150px)'
                 fontSize='min(4vw, 25px)'
-                onClick={() => setSelectedCategories([...selectedCategories, 'Character growth'])}
+                onClick={() => setSelectedCategories([...selectedCategories, 'character_growth'])}
             />
             </Grid>
             </Grid>

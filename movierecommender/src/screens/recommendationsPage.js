@@ -16,11 +16,11 @@ function RecommendationsPage() {
     const { token } = useAuth();
   useEffect(() => {
       const data = {prompt: prompt, categories: categories};
-      console.log(data);
-      axios.get('http://localhost:8080/api/movies/recommendations', {
+      // console.log(data);
+      axios.post('http://localhost:8080/api/movies/recommendations', data,{
           headers: {
               'Authorization': `Bearer ${token}`
-          }
+          },
       }).then(response => {
           console.log(response.data);
           setMovies(response.data);
