@@ -141,17 +141,16 @@ const addMovieFromTmdb = (req, res) => {
 
 // Recommend movies based on bert model similarity when the user inputs a prompt
 const getRecommendations = (req, res) => {
-    console.log(req);
+    // console.log(req);
     // Get the prompt from the request body
     const prompt = req.body.prompt;
     // Get the number of movies to recommend from the request body
     const categories = req.body.categories;
 
     // Hard coded for now an array of movie ids
-    const recommendations = [[123, 1], [771, 2], [1726, 3], [346698, 4], [258480, 5]];
-
+    // const recommendations = [[123, 1], [771, 2], [1726, 3], [346698, 4], [258480, 5]];
     // Create an array to store the movie details
-    let movieDetails = [];
+
 
     // Create a function to fetch a movie from the TMDB API and save it to the database
     const fetchAndSaveMovie = (id) => {
@@ -202,32 +201,47 @@ const getRecommendations = (req, res) => {
                     });
     })}
 
-    // Use Promise.all to wait for all the movies to be fetched and saved
-    Promise.all(recommendations.map((id_order) => {
-        console.log(id_order[0]);
-        return MovieModel.findOne({id: id_order[0]})
-            .then((movie) => {
-                if (movie) {
-                    // If the movie exists in the database, add it to the movieDetails array
-                    movieDetails.push({movie: movie, order: id_order[1]});
-                } else {
-                    // If the movie doesn't exist in the database, fetch it from the TMDB API and save it
-                    return fetchAndSaveMovie(id_order[0])
-                        .then((newMovie) => {
-                            // Add the new movie to the movieDetails array
-                            movieDetails.push({movie: newMovie, order: id_order[1]});
-                            // movieDetails.push(newMovie);
-                        });
-                }
-            });
-    }))
-        .then(() => {
-            // Once all the movies have been processed, return the movieDetails array
-            res.status(200).json(movieDetails);
+    axios.post('http://127.0.0.1:5000/recommend', {
+        prompt: prompt,
+        categories: categories
+    })
+        .then((response) => {
+            let movieDetails = [];
+            const recommendations = response.data;
+
+            Promise.all(recommendations.map((id_order) => {
+                console.log(id_order[0]);
+                return MovieModel.findOne({id: id_order[0]})
+                    .then((movie) => {
+                        if (movie) {
+                            // If the movie exists in the database, add it to the movieDetails array
+                            movieDetails.push({movie: movie, order: id_order[1]});
+                        } else {
+                            // If the movie doesn't exist in the database, fetch it from the TMDB API and save it
+                            return fetchAndSaveMovie(id_order[0])
+                                .then((newMovie) => {
+                                    // Add the new movie to the movieDetails array
+                                    movieDetails.push({movie: newMovie, order: id_order[1]});
+                                    // movieDetails.push(newMovie);
+                                });
+                        }
+                    });
+            }))
+                .then(() => {
+                    // Once all the movies have been processed, return the movieDetails array
+                    res.status(200).json(movieDetails);
+                })
+                .catch((error) => {
+                    res.status(400).json(error);
+                });
         })
         .catch((error) => {
             res.status(400).json(error);
         });
+
+
+    // Use Promise.all to wait for all the movies to be fetched and saved
+
 }
 // const getRecommendations = (req, res) => {
 //     // Get the prompt from the request body

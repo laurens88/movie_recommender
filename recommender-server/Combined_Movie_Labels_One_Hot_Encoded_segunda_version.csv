@@ -1,0 +1,168 @@
+Movie,inspiring,sad,hopeful,character_growth,uplifting,informative
+Breakfast at Tiffany's,0,0,1,0,1,0
+Requiem for a dream,0,1,0,0,0,0
+Bridge to Terabithia,0,1,0,0,0,0
+My sister's keeper,0,1,0,0,0,0
+The pursuit of happiness,1,0,0,0,0,0
+Goodtime,0,1,0,0,0,0
+Life is beautiful,1,1,1,0,0,1
+Forrest Gump,1,0,1,0,1,0
+Carol,0,0,1,1,0,0
+Romeo + Juliet,0,1,0,0,0,0
+The Book Thief,0,0,1,0,0,0
+La La Land,0,1,0,0,0,0
+Les 400 coups,0,0,1,1,0,0
+The Book thief,0,1,0,0,0,0
+The pianist,0,1,1,0,0,0
+Prayers for Bobby,0,1,1,1,0,0
+Beach rats,0,1,0,0,0,0
+Magnolia,1,0,1,0,0,0
+Portrait of a lady on fire,0,1,0,1,0,0
+Boogie Nights,1,0,1,1,0,0
+Raging Bull,0,0,1,1,0,0
+Bohemian Rhapsody,1,0,0,0,0,1
+Gifted,1,0,0,0,0,0
+Captain Fantastic,1,0,0,0,1,0
+The sea inside,0,1,1,0,0,0
+No country for old men,0,1,0,0,0,0
+Schindler's List,0,1,0,0,0,1
+Bridges of Madison County,0,1,1,0,0,0
+Brokeback Mountain,0,1,0,1,0,0
+The Hunger Games,1,0,0,0,0,0
+As good as it gets,0,0,1,1,0,0
+Gran Torino,1,0,1,0,0,0
+The fault in our stars,0,1,0,0,0,0
+Titanic,0,1,0,0,0,0
+Casablanca,0,0,1,0,0,0
+The hand of God,0,0,1,1,0,0
+Up,1,0,1,1,0,0
+Todo sobre mi madre,1,0,1,0,0,0
+Love Simon,1,0,0,0,1,0
+Good Will Hunting,1,0,0,0,0,0
+Rocky,1,0,0,0,0,0
+The Godfather,0,1,0,0,0,0
+Ratatouille,1,0,0,1,0,0
+West Side Story,0,1,0,0,0,0
+E.T.,0,1,0,0,1,0
+Kill Bill,1,0,0,0,0,0
+A star is born,1,1,0,0,0,0
+The boy in the striped pajamas,0,1,0,0,0,0
+The Matrix,1,0,0,1,0,0
+Me before you,0,1,0,0,0,0
+Fight Club,1,0,0,1,0,0
+To kill a mockingbird,0,0,1,0,0,0
+Little women,0,0,1,1,0,0
+Eternal sunshine of the spotless mind,0,0,1,0,0,0
+Hidden figures,1,0,1,0,0,0
+Million Dollar Baby,0,1,0,0,0,0
+The great beauty,1,0,0,0,0,0
+Les miserables,1,0,1,1,0,0
+Call me by your name,0,1,0,0,0,0
+Imitation game,0,1,0,0,0,1
+Ghost,0,0,1,0,0,0
+The impossible,0,0,1,1,0,0
+Coco,1,0,1,1,0,0
+The intouchables,1,0,0,0,0,0
+La vie d'Adele,1,0,1,0,0,0
+La strada,0,1,1,1,0,0
+God's Own Country,0,0,1,1,0,0
+A monster calls,0,1,1,1,0,0
+12 years a slave,0,0,1,0,0,0
+Barbie,1,0,0,0,0,0
+The age of innocence,0,1,0,0,0,0
+Saving Private Ryan,1,0,1,0,0,0
+Petite maman,0,0,1,0,0,0
+Cinema Paradiso,1,0,1,1,0,0
+Not without my daughter,0,0,1,0,0,1
+There will be blood,0,1,0,0,0,0
+The Shawshank Redemption,1,0,1,1,0,0
+Life of Pi,1,0,1,1,0,0
+Splendor in the grass,0,1,0,0,0,0
+Bicycle thieves,0,0,0,0,0,1
+The appartment,0,0,0,0,1,0
+The Goonies,0,0,0,0,1,0
+Pitch Perfect,0,0,0,0,1,0
+Iron Man,0,0,0,1,0,0
+Love actually,0,0,0,0,1,0
+Zero days,0,0,0,0,0,1
+The social network,0,0,0,0,0,1
+Grand Budapest Hotel,0,0,0,0,1,0
+Ford v Ferrari,0,0,0,0,0,1
+Big Fish,0,0,0,0,1,0
+Paris is burning,0,0,0,0,0,1
+Mary Poppins,0,0,0,0,1,0
+The bodyguard,0,0,0,0,1,0
+Senna,0,0,0,0,0,1
+Citizenfour,0,0,0,0,0,1
+Hotel Rwanda,0,0,0,0,0,1
+Cat on a Hot Tin Roof,0,0,0,0,1,0
+Rocket man,0,0,0,0,0,1
+Midnight in Paris,0,0,0,0,1,0
+Moonstruck,0,0,0,0,1,0
+BPM,0,0,0,0,0,1
+Honeyland,0,0,0,0,0,1
+Welcome to the north,0,0,0,0,1,0
+Roma,0,0,0,0,0,1
+The incredibles,0,0,0,1,0,0
+Breakfast Club,0,0,0,1,0,0
+Never look away,0,0,0,0,0,1
+All the President's Men,0,0,0,0,0,1
+Legally Blonde,0,0,0,0,1,0
+Pulp fiction,0,0,0,1,0,0
+Back to the future,0,0,0,0,1,0
+Truman Show,0,0,0,1,0,0
+Quo Vadis Aida?,0,0,0,0,0,1
+Gandhi,0,0,0,0,0,1
+The way he looks,0,0,0,0,1,0
+Gifted (un don excepcional),0,0,0,0,1,0
+Inside Out,0,0,0,0,1,0
+Full Metal Jacket,0,0,0,0,0,1
+Annie Hall,0,0,0,0,1,0
+Manhattan,0,0,0,0,1,0
+Women on the verge of a nervous breakdown,0,0,0,0,1,0
+The nanny diaries,0,0,0,1,1,0
+Before Sunrise,0,0,0,1,0,0
+A beautiful mind,0,0,0,0,0,1
+Amelie,0,0,0,0,1,0
+Home alone,0,0,0,0,1,0
+Dr. Strangelove,0,0,0,0,0,1
+The Act of Killing,0,0,0,0,0,1
+City of God,0,0,0,0,0,1
+Hidden Figures,0,0,0,0,0,1
+1917,0,0,0,0,0,1
+Apollo 13,0,0,0,0,0,1
+Grease,0,0,0,0,1,0
+Oppenheimer,0,0,0,0,0,1
+This is not a film,0,0,0,0,0,1
+The Lion King,0,0,0,1,0,0
+Mamma Mia,0,0,0,0,1,0
+Zero Dark Thirty,0,0,0,0,0,1
+Licorice Pizza,0,0,0,0,1,0
+Django unchained,0,0,0,1,0,0
+He named me Malala,0,0,0,0,0,1
+Dunkirk,0,0,0,0,0,1
+The Hunger Games: Catching Fire,1,0,0,0,0,0
+The Hunger Games: Mockingjay Part 1,1,0,0,0,0,0
+The Hunger Games: Mockingjay Part 2,1,0,0,0,0,0
+The Godfather Part II,0,1,0,0,0,0
+A Life on our Planet,0,0,0,0,0,1
+Big Hero 6,1,1,1,1,1,0
+CODA,1,0,1,1,1,0
+Moana,1,0,0,1,1,0
+Slumdog Millionaire,1,1,1,0,0,0
+Soul,1,0,1,1,0,0
+The Greatest Showman,0,0,1,1,1,0
+The Hate U Give,1,1,1,1,0,0
+Raya and the Last Dragon,1,0,1,1,0,0
+The Notebook,0,1,1,1,0,0
+Close,0,1,0,1,0,0
+Into the Wild,0,1,0,1,0,0
+The Boy who Harnessed the Wind,0,0,1,1,0,0
+Virunga,1,0,0,0,0,1
+Space man,0,0,0,1,0,0
+Honeyland,0,1,0,0,0,1
+BPM,0,1,0,1,0,0
+Senna,0,1,0,0,0,1
+Zero days,0,0,0,0,0,1
+This is not a film.,0,0,0,0,0,1
+The lord of the rings,1,0,1,1,0,0
