@@ -149,7 +149,6 @@ function EmotionsPage() {
           onChange={handleChange}
           value={prompt}
         />
-        <h6 className={styles.h6}>0/100</h6>
         <PrettyButton
           text="Next"
           width="110px"
