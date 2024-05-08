@@ -146,6 +146,9 @@ const getRecommendations = (req, res) => {
     const prompt = req.body.prompt;
     // Get the number of movies to recommend from the request body
     const categories = req.body.categories;
+    console.log("Prompt and categories");
+    console.log(prompt);
+    console.log(categories);
 
     // Hard coded for now an array of movie ids
     // const recommendations = [[123, 1], [771, 2], [1726, 3], [346698, 4], [258480, 5]];
