@@ -13,6 +13,7 @@ function RecommendationsPage() {
     const categories = location.state.categories;
     let navigate = useNavigate();
     const [movies, setMovies] = React.useState([{}]);
+    const [page, setPage] = React.useState(0);
     const { token } = useAuth();
   useEffect(() => {
       const data = {prompt: prompt, categories: categories};
@@ -42,8 +43,11 @@ function RecommendationsPage() {
   return (
     <div>
       <h1 className={styles.h1}>Movies we believe you may like</h1>
-      <MovieRow movies={movies.slice(0,3)} click={true}/>
-      <MovieRow movies={movies.slice(3,5)} click={true}/>
+      <h1>{page}</h1>
+      <div className={styles.movieRow}>
+      <MovieRow movies={movies.slice(page+1, 3)} click={true}/>
+      <MovieRow movies={movies.slice(3, 5)} click={true}/>
+      </div>
       <div className={styles.buttonContainer}>
       <PrettyButton
         text="Back"
@@ -51,6 +55,7 @@ function RecommendationsPage() {
         height="50px"
         fontSize="25px"
         color="#A7C7E7"
+        onClick={() => setPage(page - 1)}
         />
       <PrettyButton
         text="More"
@@ -58,6 +63,7 @@ function RecommendationsPage() {
         height="50px"
         fontSize="25px"
         color="#A7C7E7"
+        onClick={() => setPage(page + 1)}
       />
       </div>
     </div>

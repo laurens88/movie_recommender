@@ -17,18 +17,4 @@ function MovieRow(props) {
     );
 }
 
-// function MovieRow(props) {
-//     return (
-//         <>
-//         <h2 className={styles.title}>{props.title}</h2>
-//         <div className={styles.row}>
-//         <MovieBlock />
-//         <MovieBlock />
-//         <MovieBlock />
-//         <MovieBlock />
-//         </div>
-//         </>
-//     );
-//     }
-
 export default MovieRow;
