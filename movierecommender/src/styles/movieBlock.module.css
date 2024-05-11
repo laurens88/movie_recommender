@@ -34,3 +34,33 @@
 .movieBlock:hover .movieDetails {
     display: block;
 }
+
+.buttons {
+    display: flex;
+    justify-content: right;
+}
+
+.button {
+    border: none;          /* Removes the border */
+    background: transparent; /* Makes the background transparent */
+    padding: 10px;         /* Adjust padding as needed */
+    width: 50px;           /* Specify a width */
+    height: 50px;          /* Specify a height */
+    outline: none;         /* Removes the focus outline */
+    cursor: pointer;       /* Sets the cursor to pointer to indicate it's clickable */
+    box-shadow: none;      /* Removes any shadow effects */
+    transition: none;      /* Prevents any transition effects that might be inherited */
+}
+
+.button:hover, .button:focus, .button:active {
+    border: none;          /* Ensures no border appears on hover/focus */
+    outline: none;         /* Removes the focus outline on hover/focus */
+    background: transparent; /* Keeps background transparent on hover/focus */
+    box-shadow: none;      /* Ensures no shadow appears on hover/focus */
+}
+
+.button img {
+    display: block;       /* Removes any extra space below the image */
+    width: 100%;          /* Ensures the image fills the button */
+    height: auto;         /* Keeps image aspect ratio */
+}
