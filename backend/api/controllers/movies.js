@@ -179,6 +179,7 @@ const getRecommendations = (req, res) => {
                         if (!movie.poster_path) {
                             // Sort the backdrops by vote count
                             let backdrops = responses[1].data.backdrops.sort((a, b) => b.vote_count - a.vote_count);
+                            console.log
                             // Get the highest voted backdrop and in English, if possible
                             // Else get the highest voted backdrop
                             movie.poster_path = backdrops[0].file_path;
@@ -211,6 +212,8 @@ const getRecommendations = (req, res) => {
         .then((response) => {
             let movieDetails = [];
             const recommendations = response.data;
+            console.log("HERE");
+            console.log(recommendations[17]);
 
             Promise.all(recommendations.map((id_order) => {
                 console.log(id_order[0]);
@@ -235,10 +238,12 @@ const getRecommendations = (req, res) => {
                     res.status(200).json(movieDetails);
                 })
                 .catch((error) => {
+                    console.log(error);
                     res.status(400).json(error);
                 });
         })
         .catch((error) => {
+            console.log(error);
             res.status(400).json(error);
         });
 

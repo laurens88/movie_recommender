@@ -20,7 +20,6 @@ router.post("/users", ctrlUsers.addUser);
 
 // Sign in
 router.post("/signin", ctrlUsers.signIn);
-
 router.post("/movies/recommendations", (req, res, next) => {
     console.log('Recommendations route hit');
     next();
