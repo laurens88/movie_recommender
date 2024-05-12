@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/movieBlock.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -12,17 +12,35 @@ import watchedBeforeIconActive from "../watchedbeforeActive.svg";
 
 function MovieBlock(props) {
   const navigate = useNavigate();
-  const { movie, clickable } = props;
+  const { movie, clickable, fave, list, watch } = props;
   const { token } = useAuth();
 
   const [favorite, setFavorite] = useState(false);
+  const [clickedFavorite, setClickedFavorite] = useState(false);
+  // setFavorite(fave);
 
   const [watchlist, setWatchlist] = useState(false);
+  const [clickedWatchlist, setClickedWatchlist] = useState(false);
+    // setWatchlist(list);
   const [watched, setWatched] = useState(false);
+    const [clickedWatched, setClickedWatched] = useState(false);
 
-  const toggleFavorite = () => {
+
+    useEffect(() => {
+        setFavorite(fave);
+        setWatchlist(list);
+        setWatched(watch);
+    }, [fave, list, watch]);
+
+  const toggleFavorite = (event) => {
+        event.stopPropagation();
+        console.log(favorite);
+        let tmp = !favorite;
     setFavorite(!favorite);
-    if (favorite) {
+    // if
+    // console.log(favorite);
+    setClickedFavorite(true);
+    if (tmp) {
         axios.post(
             `http://localhost:8080/api/users/favorites/${movie.id}`,
             {},
@@ -32,11 +50,15 @@ function MovieBlock(props) {
         )
         .then((response) => {
             console.log("Added movie to favorites");
+            setClickedFavorite(false);
+
         })
         .catch((error) => {
             console.error("Error adding movie to favorites:", error);
+            setClickedFavorite(false);
         });
-    } else {
+    }
+    else {
         axios.delete(`http://localhost:8080/api/users/favorites/${movie.id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -51,9 +73,12 @@ function MovieBlock(props) {
     }
   };
 
-  const toggleWatchlist = () => {
+  const toggleWatchlist = (event) => {
+        event.stopPropagation();
+      setClickedWatchlist(true);
+      let tmp = !watchlist;
     setWatchlist(!watchlist);
-    if (watchlist) {
+    if (tmp) {
         axios.post(
             `http://localhost:8080/api/users/watchlist/${movie.id}`,
             {},
@@ -63,9 +88,11 @@ function MovieBlock(props) {
         )
         .then((response) => {
             console.log("Added movie to watchlist");
+            setClickedWatchlist(false);
         })
         .catch((error) => {
             console.error("Error adding movie to watchlist:", error);
+            setClickedWatchlist(false);
         });
     } else {
         axios.delete(`http://localhost:8080/api/users/watchlist/${movie.id}`, {
@@ -75,16 +102,21 @@ function MovieBlock(props) {
         })
         .then((response) => {
             console.log("Removed movie from watchlist");
+            setClickedWatchlist(false);
         })
         .catch((error) => {
             console.error("Error removing movie from watchlist:", error);
+            setClickedWatchlist(false);
         });
     }
   };
 
-  const toggleWatched = () => {
+  const toggleWatched = (event) => {
+      event.stopPropagation();
     setWatched(!watched);
-    if (watched) {
+      let tmp = !watched;
+    setClickedWatched(true);
+    if (tmp) {
         axios.post(
             `http://localhost:8080/api/users/watched/${movie.id}`,
             {},
@@ -94,9 +126,11 @@ function MovieBlock(props) {
         )
         .then((response) => {
             console.log("Added movie to watched");
+            setClickedWatched(false);
         })
         .catch((error) => {
             console.error("Error adding movie to watched:", error);
+            setClickedWatched(false);
         });
     } else {
         axios.delete(`http://localhost:8080/api/users/watched/${movie.id}`, {
@@ -106,9 +140,11 @@ function MovieBlock(props) {
         })
         .then((response) => {
             console.log("Removed movie from watched");
+            setClickedWatched(false);
         })
         .catch((error) => {
             console.error("Error removing movie from watched:", error);
+            setClickedWatched(false);
         });
     }
   };
@@ -116,7 +152,8 @@ function MovieBlock(props) {
   const handleClick = () => {
     console.log("Movie clicked:", movie.title);
     console.log("clickable:", clickable);
-    if (clickable) {
+
+    if (clickable && !clickedFavorite && !clickedWatchlist && !clickedWatched) {
       // remove the movie from currently watching
       axios
         .delete(`http://localhost:8080/api/users/currentlywatching`, {
@@ -154,19 +191,19 @@ function MovieBlock(props) {
       <img src={movie.poster_url} alt={movie.title} />
       <div className={styles.movieDetails}>
         <div className={styles.buttons}>
-          <button className={styles.button} onClick={toggleFavorite}>
-            <img src={favorite ? favoritesIconActive : favoritesIcon} />
-          </button>
-          <button className={styles.button} onClick={toggleWatchlist}>
-            <img src={watchlist ? watchlistIconActive : watchlistIcon} />
-          </button>
-          <button className={styles.button} onClick={toggleWatched}>
-            <img src={watched ? watchedBeforeIconActive : watchedBeforeIcon} />
-          </button>
+            <button className={styles.button} onClick={(event) => toggleFavorite(event)}>
+                <img src={favorite ? favoritesIconActive : favoritesIcon}/>
+            </button>
+            <button className={styles.button} onClick={(event) => toggleWatchlist(event)}>
+                <img src={watchlist ? watchlistIconActive : watchlistIcon}/>
+            </button>
+            <button className={styles.button} onClick={(event) => toggleWatched(event)}>
+                <img src={watched ? watchedBeforeIconActive : watchedBeforeIcon}/>
+            </button>
         </div>
-        <h3>
-          {movie.title} ({movie.yearReleased})
-        </h3>
+          <h3>
+              {movie.title} ({movie.yearReleased})
+          </h3>
         <p>{movie.synopsis}</p>
       </div>
     </div>
