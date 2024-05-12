@@ -130,9 +130,11 @@ const getFavoriteMovies = (req, res) => {
             if (!user) {
                 res.status(404).json("User not found");
             } else {
+                console.log(user.favoriteMovies);
                 // Fetch the favorite movies from the database using the movie IDs
                 MovieModel.find({id: {$in: user.favoriteMovies}})
                     .then((movies) => {
+                        console.log(movies)
                         res.status(200).json(movies);
                     })
                     .catch((error) => {
@@ -318,6 +320,77 @@ const removeCurrentlyWatching = (req, res) => {
 
 }
 
+// pop movie id that we get in url from favorites of user
+const removeFavoriteMovie = (req, res) => {
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                let movie_id = req.params.id;
+                user.favoriteMovies = user.favoriteMovies.filter(item => item !== movie_id);
+                user.save()
+                    .then(() => {
+                        res.status(200).json("Success");
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+}
+
+
+
+const removeWatchedMovie = (req, res) => {
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                // user.watchedMovies.pop();
+                let movie_id = req.params.id;
+                user.watchedMovies = user.watchedMovies.filter(item => item !== movie_id);
+                user.save()
+                    .then(() => {
+                        res.status(200).json("Success");
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+}
+
+const removeWatchlistMovie = (req, res) => {
+    UserProfileModel.findOne({username: req.user.username})
+        .then((user) => {
+            if (!user) {
+                res.status(404).json("User not found");
+            } else {
+                // user.watchlist.pop();
+                let movie_id = req.params.id;
+                user.watchlist = user.watchlist.filter(item => item !== movie_id);
+                user.save()
+                    .then(() => {
+                        res.status(200).json("Success");
+                    })
+                    .catch((error) => {
+                        res.status(400).json(error);
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+}
+
 module.exports = {
     getUser,
     addUser,
@@ -331,5 +404,8 @@ module.exports = {
     addWatchedMovie,
     addWatchlistMovie,
     addCurrentlyWatchingMovie,
-    removeCurrentlyWatching
+    removeCurrentlyWatching,
+    removeFavoriteMovie,
+    removeWatchedMovie,
+    removeWatchlistMovie
 }

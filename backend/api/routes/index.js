@@ -39,9 +39,15 @@ router.delete("/users/currentlywatching", authentication, ctrlUsers.removeCurren
 
 router.post("/users/favorites/:id", authentication, ctrlUsers.addFavoriteMovie);
 
+router.delete("/users/favorites/:id", authentication, ctrlUsers.removeFavoriteMovie);
+
 router.post("/users/watched/:id", authentication, ctrlUsers.addWatchedMovie);
 
+router.delete("/users/watched/:id", authentication, ctrlUsers.removeWatchedMovie);
+
 router.post("/users/watchlist/:id", authentication, ctrlUsers.addWatchlistMovie);
+
+router.delete("/users/watchlist/:id", authentication, ctrlUsers.removeWatchlistMovie);
 
 router.post("/users/currentlywatching/:id", authentication, ctrlUsers.addCurrentlyWatchingMovie);
 

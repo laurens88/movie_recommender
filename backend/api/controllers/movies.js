@@ -201,7 +201,14 @@ const getRecommendations = (req, res) => {
                             poster_url: `https://image.tmdb.org/t/p/w500${movie.poster_path}`
                         });
 
-                        return newMovie.save();
+                        return newMovie.save()
+                            .catch((error) => {
+                                if (error.code === 11000) { // This is the error code for a duplication error in MongoDB
+                                    console.log(`Movie with id ${newMovie.id} already exists in the database.`);
+                                } else {
+                                    throw error; // If it's not a duplication error, throw the error again
+                                }
+                            });
                     });
     })}
 
@@ -213,7 +220,7 @@ const getRecommendations = (req, res) => {
             let movieDetails = [];
             const recommendations = response.data;
             console.log("HERE");
-            console.log(recommendations[17]);
+            console.log(recommendations[6]);
 
             Promise.all(recommendations.map((id_order) => {
                 console.log(id_order[0]);
@@ -222,11 +229,13 @@ const getRecommendations = (req, res) => {
                         if (movie) {
                             // If the movie exists in the database, add it to the movieDetails array
                             movieDetails.push({movie: movie, order: id_order[1]});
+                            console.log("Movie exists in database")
                         } else {
                             // If the movie doesn't exist in the database, fetch it from the TMDB API and save it
                             return fetchAndSaveMovie(id_order[0])
                                 .then((newMovie) => {
                                     // Add the new movie to the movieDetails array
+                                    console.log("Movie does not exist in database")
                                     movieDetails.push({movie: newMovie, order: id_order[1]});
                                     // movieDetails.push(newMovie);
                                 });
