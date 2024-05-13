@@ -6,6 +6,14 @@ import "../App.css";
 import {useLocation, useNavigate} from 'react-router-dom';
 import axios from "axios";
 import {useAuth} from "../contexts/AuthContext";
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 function RecommendationsPage() {
     console.log('RecommendationsPage rendered');
@@ -19,6 +27,7 @@ function RecommendationsPage() {
     const [page, setPage] = React.useState(0);
     const [once, setOnce] = React.useState(false);
     const { token } = useAuth();
+    const [isLoading, setIsLoading] = React.useState(true);
   useEffect(() => {
       if (!once) {
           setOnce(true);
@@ -36,9 +45,11 @@ function RecommendationsPage() {
               const moviesOnly = response.data.sort((a, b) => a.order - b.order).map(item => item.movie);
 
               setMovies(moviesOnly);
+              setIsLoading(false);
           })
               .catch(error => {
                   console.error('Error fetching recommendations:', error);
+                  setIsLoading(false);
               });
       }
     document.title = "Recommendations";
@@ -47,6 +58,9 @@ function RecommendationsPage() {
       document.body.classList.remove("BodyBackground");
     };
   }, []);
+    if (isLoading) { // Add this block
+        return <ClipLoader color="#ffffff" loading={isLoading} css={override} size={150} />;
+    }
   return (
     <div>
       <h1 className={styles.h1}>Movies we believe you may like</h1>

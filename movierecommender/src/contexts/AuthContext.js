@@ -32,12 +32,19 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
+    const signOut = () => { // Add this function
+        localStorage.removeItem('token');
+        setToken(null);
+        setDecodedToken(null);
+        setIsValid(false);
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
 
     return (
-        <AuthContext.Provider value={{ token, decodedToken, isValid }}>
+        <AuthContext.Provider value={{ token, decodedToken, isValid, signOut }}>
             {children}
         </AuthContext.Provider>
     );

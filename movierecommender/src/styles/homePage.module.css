@@ -52,3 +52,13 @@
     align-items: center;
     margin-top: 1rem;
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signOutButton {
+    margin-right: 20px;
+}

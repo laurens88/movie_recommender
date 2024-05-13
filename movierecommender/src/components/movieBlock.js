@@ -12,7 +12,7 @@ import watchedBeforeIconActive from "../watchedbeforeActive.svg";
 
 function MovieBlock(props) {
   const navigate = useNavigate();
-  const { movie, clickable, fave, list, watch } = props;
+  const { triggerReloadMovies, movie, clickable, fave, list, watch } = props;
   const { token } = useAuth();
 
   const [favorite, setFavorite] = useState(false);
@@ -51,6 +51,9 @@ function MovieBlock(props) {
         .then((response) => {
             console.log("Added movie to favorites");
             setClickedFavorite(false);
+            if (triggerReloadMovies !== undefined) {
+                triggerReloadMovies();
+            }
 
         })
         .catch((error) => {
@@ -66,6 +69,9 @@ function MovieBlock(props) {
         })
         .then((response) => {
             console.log("Removed movie from favorites");
+            if (triggerReloadMovies !== undefined) {
+                triggerReloadMovies();
+            }
         })
         .catch((error) => {
             console.error("Error removing movie from favorites:", error);
@@ -89,6 +95,9 @@ function MovieBlock(props) {
         .then((response) => {
             console.log("Added movie to watchlist");
             setClickedWatchlist(false);
+            if (triggerReloadMovies !== undefined) {
+                triggerReloadMovies();
+            }
         })
         .catch((error) => {
             console.error("Error adding movie to watchlist:", error);
@@ -103,6 +112,9 @@ function MovieBlock(props) {
         .then((response) => {
             console.log("Removed movie from watchlist");
             setClickedWatchlist(false);
+            if (triggerReloadMovies !== undefined) {
+                triggerReloadMovies();
+            }
         })
         .catch((error) => {
             console.error("Error removing movie from watchlist:", error);
@@ -127,6 +139,9 @@ function MovieBlock(props) {
         .then((response) => {
             console.log("Added movie to watched");
             setClickedWatched(false);
+            if (triggerReloadMovies !== undefined) {
+                triggerReloadMovies();
+            }
         })
         .catch((error) => {
             console.error("Error adding movie to watched:", error);
@@ -141,6 +156,9 @@ function MovieBlock(props) {
         .then((response) => {
             console.log("Removed movie from watched");
             setClickedWatched(false);
+            if (triggerReloadMovies !== undefined) {
+                triggerReloadMovies();
+            }
         })
         .catch((error) => {
             console.error("Error removing movie from watched:", error);

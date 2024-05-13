@@ -13,27 +13,37 @@ function HomePage() {
 
     let navigate = useNavigate();
     const [favoriteMovies, setFavoriteMovies] = React.useState([]);
+    const [reloadMovies, setReloadMovies] = React.useState(false);
+    const triggerReloadMovies = () => setReloadMovies(!reloadMovies);
+
     const [watchedMovies, setWatchedMovies] = React.useState([]);
     const [currentlyWatching, setCurrentlyWatching] = React.useState([]);
     const [watchlist, setWatchlist] = React.useState([]);
 
-    function goToMoviePage() {
-        
-    }
+    const { token, decodedToken, isValid, signOut } = useAuth();
+    let storedToken = null;
+
+
+    const handleSignOut = () => { // Add this function
+        signOut();
+        navigate('/login');
+    };
 
     function goToFeedbackPage() {
-        navigate('/feedback');
+        navigate('/feedback', { state: { movieID: currentlyWatching[0].id }});
     }
 
     function goToEmotionPage() {
         navigate('/emotions');
     }
 
-    const { token, decodedToken, isValid } = useAuth();
-
 
     useEffect(() => {
-        if (!isValid ) {
+        storedToken = localStorage.getItem('token');
+
+        if (!isValid && storedToken !== null) {
+            window.location.reload();
+        } else if (!isValid) {
             console.log(token);
             console.log('Invalid token');
             navigate('/login');
@@ -101,25 +111,31 @@ function HomePage() {
         return () => {
             document.body.classList.remove('BodyBackground');
         };
-    }, []);
+    }, [reloadMovies, storedToken, token, isValid, decodedToken]);
     return (
         <div>
-        <h1 className={styles.h1}>Welcome, {isValid ? (decodedToken.firstName) : ('')}</h1>
-        <div className={styles.nextMovie}>
-        <PrettyButton text='Find your next movie' fontSize='12px' color='#A7C7E7' onClick={goToEmotionPage}/>
-        </div>
+            <div className={styles.header}> {/* Add this line */}
+                <h1 className={styles.h1}>Welcome, {isValid ? (decodedToken.firstName) : ('')}</h1>
+                <PrettyButton className={styles.signOutButton} text='Sign Out' fontSize='12px' color='#A7C7E7'
+                              onClick={handleSignOut}/> {/* Add this line */}
+            </div>
+            {/* Add this line */}
+            <div className={styles.nextMovie}>
+                <PrettyButton text='Find your next movie' fontSize='12px' color='#A7C7E7' onClick={goToEmotionPage}/>
+            </div>
 
-            {(currentlyWatching.length > 0) && (<div className={styles.currentlyWatching} >
-        <h5 className={styles.h5}>Currently watching...</h5>
-                    <MovieBlock key={currentlyWatching[0].id} movie={currentlyWatching[0]} />
-        {/*<MovieBlock />*/}
+            {(currentlyWatching.length > 0) && (<div className={styles.currentlyWatching}>
+                    <h5 className={styles.h5}>Currently watching...</h5>
+                    <MovieBlock triggerReloadMovies={triggerReloadMovies} key={currentlyWatching[0].id}
+                                movie={currentlyWatching[0]}/>
+                    {/*<MovieBlock />*/}
         <PrettyButton text='Give feedback' fontSize='12px' color='#A7C7E7' onClick={goToFeedbackPage}/>
         </div>
             )}
 
-            <MovieRow title="Favorites" movies={favoriteMovies} click={false} fave={true} list={false} watched={false}/>
-            <MovieRow title="My list" movies={watchlist} click={false} fave={false} list={true} watched={false}/>
-            <MovieRow title="Watched before" movies={watchedMovies} click={false} fave={false} list={false} watched={true}/>
+            <MovieRow title="Favorites" triggerReloadMovies={triggerReloadMovies} movies={favoriteMovies} click={false} fave={true} list={false} watched={false}/>
+            <MovieRow title="My list" triggerReloadMovies={triggerReloadMovies} movies={watchlist} click={false} fave={false} list={true} watched={false}/>
+            <MovieRow title="Watched before" triggerReloadMovies={triggerReloadMovies} movies={watchedMovies} click={false} fave={false} list={false} watched={true}/>
         </div>
     );
     }

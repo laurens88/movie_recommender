@@ -1,16 +1,33 @@
-import { React, useEffect} from "react";
+import React, { useEffect} from "react";
 import "../App.css";
 import styles from "../styles/feedbackPage.module.css";
 import PrettySlider from "../components/slider";
 import TransparentInput from "../components/transparentInput";
 import PrettyButton from "../components/prettyButton";
-import { useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
+import axios from "axios";
+import {useAuth} from "../contexts/AuthContext";
 
 function FeedbackPage() {
   let navigate = useNavigate();
+    const location = useLocation();
+    const movieID = location.state.movieID;
+    const { token, decodedToken, isValid } = useAuth();
 
-  function goToHomePage() {
-    navigate('/');
+  function submitFeedback() {
+      axios
+          .delete(`http://localhost:8080/api/users/currentlywatching`, {
+              headers: {
+                  Authorization: `Bearer ${token}`,
+              },
+          })
+          .then((r) => {
+              console.log("Removed movie from currently watching");
+              navigate("/home");
+          })
+          .catch((e) => {
+              console.error("Error removing movie from currently watching:", e);
+          });
   }
 
   useEffect(() => {
@@ -31,7 +48,7 @@ function FeedbackPage() {
       <PrettySlider />
       <div className={styles.feedbackSubmission}>
       <TransparentInput type="text" placeholder="(Optional): Any additional feedback?" />
-      <PrettyButton text="Submit" fontSize="12px" color="#A7C7E7" onClick={goToHomePage}/>
+      <PrettyButton text="Submit" fontSize="12px" color="#A7C7E7" onClick={submitFeedback}/>
       </div>
     </div>
   );

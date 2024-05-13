@@ -7,12 +7,12 @@ import {useAuth} from "../contexts/AuthContext";
 import {useNavigate} from "react-router-dom";
 
 function LoginPage() {
-    const { token, isValid } = useAuth();
+    const { token, decodedToken, isValid } = useAuth();
     let navigate = useNavigate();
 
 
   useEffect(() => {
-if (isValid && token) {
+if (isValid) {
       console.log(token);
       console.log('Valid token');
       navigate('/home');
