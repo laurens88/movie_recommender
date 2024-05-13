@@ -23,7 +23,22 @@ function FeedbackPage() {
           })
           .then((r) => {
               console.log("Removed movie from currently watching");
-              navigate("/home");
+              axios.post(
+                  `http://localhost:8080/api/users/watched/${movieID}`,
+                  {},
+                  {
+                      headers: { Authorization: `Bearer ${token}` },
+                  }
+              )
+                  .then((response) => {
+                      console.log("Added movie to watched");
+                      navigate("/home");
+                  })
+                  .catch((error) => {
+                      console.error("Error adding movie to watched:", error);
+                      navigate("/home");
+                  });
+
           })
           .catch((e) => {
               console.error("Error removing movie from currently watching:", e);
