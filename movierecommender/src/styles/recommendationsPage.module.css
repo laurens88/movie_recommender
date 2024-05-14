@@ -38,3 +38,9 @@
 .movieRow {
     margin-left: 2vw;
 }
+
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

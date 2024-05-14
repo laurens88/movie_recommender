@@ -59,7 +59,11 @@ function RecommendationsPage() {
     };
   }, []);
     if (isLoading) { // Add this block
-        return <ClipLoader color="#ffffff" loading={isLoading} css={override} size={150} />;
+        return (
+          <div className={styles.loadingContainer}>
+        <ClipLoader color="#ffffff" loading={isLoading} css={override} size={150} />
+        </div>
+      );
     }
   return (
     <div>
