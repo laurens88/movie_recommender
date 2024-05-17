@@ -38,7 +38,11 @@ function MovieBlock(props) {
     setClickedFavorite(true);
     if (tmp) {
       axios
-        .post(`http://localhost:8080/api/users/favorites/${movie.id}`, {}, { headers: { Authorization: `Bearer ${token}` } })
+        .post(
+          `http://localhost:8080/api/users/favorites/${movie.id}`,
+          {},
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
         .then((response) => {
           setClickedFavorite(false);
           if (triggerReloadMovies) triggerReloadMovies();
@@ -49,7 +53,9 @@ function MovieBlock(props) {
         });
     } else {
       axios
-        .delete(`http://localhost:8080/api/users/favorites/${movie.id}`, { headers: { Authorization: `Bearer ${token}` } })
+        .delete(`http://localhost:8080/api/users/favorites/${movie.id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((response) => {
           if (triggerReloadMovies) triggerReloadMovies();
         })
@@ -66,7 +72,11 @@ function MovieBlock(props) {
     setClickedWatchlist(true);
     if (tmp) {
       axios
-        .post(`http://localhost:8080/api/users/watchlist/${movie.id}`, {}, { headers: { Authorization: `Bearer ${token}` } })
+        .post(
+          `http://localhost:8080/api/users/watchlist/${movie.id}`,
+          {},
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
         .then((response) => {
           setClickedWatchlist(false);
           if (triggerReloadMovies) triggerReloadMovies();
@@ -77,7 +87,9 @@ function MovieBlock(props) {
         });
     } else {
       axios
-        .delete(`http://localhost:8080/api/users/watchlist/${movie.id}`, { headers: { Authorization: `Bearer ${token}` } })
+        .delete(`http://localhost:8080/api/users/watchlist/${movie.id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((response) => {
           setClickedWatchlist(false);
           if (triggerReloadMovies) triggerReloadMovies();
@@ -96,7 +108,11 @@ function MovieBlock(props) {
     setClickedWatched(true);
     if (tmp) {
       axios
-        .post(`http://localhost:8080/api/users/watched/${movie.id}`, {}, { headers: { Authorization: `Bearer ${token}` } })
+        .post(
+          `http://localhost:8080/api/users/watched/${movie.id}`,
+          {},
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
         .then((response) => {
           setClickedWatched(false);
           if (triggerReloadMovies) triggerReloadMovies();
@@ -107,7 +123,9 @@ function MovieBlock(props) {
         });
     } else {
       axios
-        .delete(`http://localhost:8080/api/users/watched/${movie.id}`, { headers: { Authorization: `Bearer ${token}` } })
+        .delete(`http://localhost:8080/api/users/watched/${movie.id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((response) => {
           setClickedWatched(false);
           if (triggerReloadMovies) triggerReloadMovies();
@@ -122,10 +140,16 @@ function MovieBlock(props) {
   const handleClick = () => {
     if (clickable && !clickedFavorite && !clickedWatchlist && !clickedWatched) {
       axios
-        .delete(`http://localhost:8080/api/users/currentlywatching`, { headers: { Authorization: `Bearer ${token}` } })
+        .delete(`http://localhost:8080/api/users/currentlywatching`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then(() => {
           axios
-            .post(`http://localhost:8080/api/users/currentlywatching/${movie.id}`, {}, { headers: { Authorization: `Bearer ${token}` } })
+            .post(
+              `http://localhost:8080/api/users/currentlywatching/${movie.id}`,
+              {},
+              { headers: { Authorization: `Bearer ${token}` } }
+            )
             .then(() => {
               navigate("/home");
             })
@@ -144,23 +168,52 @@ function MovieBlock(props) {
       <img src={movie.poster_url} alt={movie.title} />
       <div className={styles.movieDetails}>
         <div className={styles.buttons}>
-          <div className={styles.buttonWrapper} onMouseEnter={() => setIsHoveredFavorite(true)} onMouseLeave={() => setIsHoveredFavorite(false)}>
-            <button className={styles.button} onClick={(event) => toggleFavorite(event)}>
+          <div
+            className={styles.buttonWrapper}
+            onMouseEnter={() => setIsHoveredFavorite(true)}
+            onMouseLeave={() => setIsHoveredFavorite(false)}
+          >
+            <button
+              className={styles.button}
+              onClick={(event) => toggleFavorite(event)}
+            >
               <img src={favorite ? favoritesIconActive : favoritesIcon} />
             </button>
-            {isHoveredFavorite && <div className={styles.hoverText}>Favorite</div>}
+            {isHoveredFavorite && (
+              <div className={styles.hoverText}>Favorite</div>
+            )}
           </div>
-          <div className={styles.buttonWrapper} onMouseEnter={() => setIsHoveredWatchlist(true)} onMouseLeave={() => setIsHoveredWatchlist(false)}>
-            <button className={styles.button} onClick={(event) => toggleWatchlist(event)}>
+          <div
+            className={styles.buttonWrapper}
+            onMouseEnter={() => setIsHoveredWatchlist(true)}
+            onMouseLeave={() => setIsHoveredWatchlist(false)}
+          >
+            <button
+              className={styles.button}
+              onClick={(event) => toggleWatchlist(event)}
+            >
               <img src={watchlist ? watchlistIconActive : watchlistIcon} />
             </button>
-            {isHoveredWatchlist && <div className={styles.hoverText}>My list</div>}
+            {isHoveredWatchlist && (
+              <div className={styles.hoverText}>My list</div>
+            )}
           </div>
-          <div className={styles.buttonWrapper} onMouseEnter={() => setIsHoveredWatched(true)} onMouseLeave={() => setIsHoveredWatched(false)}>
-            <button className={styles.button} onClick={(event) => toggleWatched(event)}>
-              <img src={watched ? watchedBeforeIconActive : watchedBeforeIcon} />
+          <div
+            className={styles.buttonWrapper}
+            onMouseEnter={() => setIsHoveredWatched(true)}
+            onMouseLeave={() => setIsHoveredWatched(false)}
+          >
+            <button
+              className={styles.button}
+              onClick={(event) => toggleWatched(event)}
+            >
+              <img
+                src={watched ? watchedBeforeIconActive : watchedBeforeIcon}
+              />
             </button>
-            {isHoveredWatched && <div className={styles.hoverText}>Already seen</div>}
+            {isHoveredWatched && (
+              <div className={styles.hoverText}>Already seen</div>
+            )}
           </div>
         </div>
         <h3>

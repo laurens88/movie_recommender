@@ -8,8 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { ToggleButton } from "@mui/material";
 
-// Inside your component
-
 function CategoriesPage() {
   let navigate = useNavigate();
   const location = useLocation();
@@ -25,16 +23,16 @@ function CategoriesPage() {
   };
 
   const handleButtonClick = (category, customOnClick) => {
-    if (category === 'no_preference') {
-        setActiveButtons({});
-        setSelectedCategories([]);
+    if (category === "no_preference") {
+      setActiveButtons({});
+      setSelectedCategories([]);
     } else {
-        toggleButton(category);
-        if (customOnClick) {
-            customOnClick();
-        }
+      toggleButton(category);
+      if (customOnClick) {
+        customOnClick();
+      }
     }
-}
+  };
 
   function goToRecommendationsPage() {
     navigate("/recommendations", {
