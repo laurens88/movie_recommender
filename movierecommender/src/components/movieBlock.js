@@ -17,190 +17,125 @@ function MovieBlock(props) {
 
   const [favorite, setFavorite] = useState(false);
   const [clickedFavorite, setClickedFavorite] = useState(false);
-  // setFavorite(fave);
-
   const [watchlist, setWatchlist] = useState(false);
   const [clickedWatchlist, setClickedWatchlist] = useState(false);
-    // setWatchlist(list);
   const [watched, setWatched] = useState(false);
-    const [clickedWatched, setClickedWatched] = useState(false);
+  const [clickedWatched, setClickedWatched] = useState(false);
+  const [isHoveredFavorite, setIsHoveredFavorite] = useState(false);
+  const [isHoveredWatchlist, setIsHoveredWatchlist] = useState(false);
+  const [isHoveredWatched, setIsHoveredWatched] = useState(false);
 
-
-    useEffect(() => {
-        setFavorite(fave);
-        setWatchlist(list);
-        setWatched(watch);
-    }, [fave, list, watch]);
+  useEffect(() => {
+    setFavorite(fave);
+    setWatchlist(list);
+    setWatched(watch);
+  }, [fave, list, watch]);
 
   const toggleFavorite = (event) => {
-        event.stopPropagation();
-        console.log(favorite);
-        let tmp = !favorite;
-    setFavorite(!favorite);
-    // if
-    // console.log(favorite);
+    event.stopPropagation();
+    let tmp = !favorite;
+    setFavorite(tmp);
     setClickedFavorite(true);
     if (tmp) {
-        axios.post(
-            `http://localhost:8080/api/users/favorites/${movie.id}`,
-            {},
-            {
-                headers: { Authorization: `Bearer ${token}` },
-            }
-        )
+      axios
+        .post(`http://localhost:8080/api/users/favorites/${movie.id}`, {}, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
-            console.log("Added movie to favorites");
-            setClickedFavorite(false);
-            if (triggerReloadMovies !== undefined) {
-                triggerReloadMovies();
-            }
-
+          setClickedFavorite(false);
+          if (triggerReloadMovies) triggerReloadMovies();
         })
         .catch((error) => {
-            console.error("Error adding movie to favorites:", error);
-            setClickedFavorite(false);
+          console.error("Error adding movie to favorites:", error);
+          setClickedFavorite(false);
         });
-    }
-    else {
-        axios.delete(`http://localhost:8080/api/users/favorites/${movie.id}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        })
+    } else {
+      axios
+        .delete(`http://localhost:8080/api/users/favorites/${movie.id}`, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
-            console.log("Removed movie from favorites");
-            if (triggerReloadMovies !== undefined) {
-                triggerReloadMovies();
-            }
+          if (triggerReloadMovies) triggerReloadMovies();
         })
         .catch((error) => {
-            console.error("Error removing movie from favorites:", error);
+          console.error("Error removing movie from favorites:", error);
         });
     }
   };
 
   const toggleWatchlist = (event) => {
-        event.stopPropagation();
-      setClickedWatchlist(true);
-      let tmp = !watchlist;
-    setWatchlist(!watchlist);
+    event.stopPropagation();
+    let tmp = !watchlist;
+    setWatchlist(tmp);
+    setClickedWatchlist(true);
     if (tmp) {
-        axios.post(
-            `http://localhost:8080/api/users/watchlist/${movie.id}`,
-            {},
-            {
-                headers: { Authorization: `Bearer ${token}` },
-            }
-        )
+      axios
+        .post(`http://localhost:8080/api/users/watchlist/${movie.id}`, {}, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
-            console.log("Added movie to watchlist");
-            setClickedWatchlist(false);
-            if (triggerReloadMovies !== undefined) {
-                triggerReloadMovies();
-            }
+          setClickedWatchlist(false);
+          if (triggerReloadMovies) triggerReloadMovies();
         })
         .catch((error) => {
-            console.error("Error adding movie to watchlist:", error);
-            setClickedWatchlist(false);
+          console.error("Error adding movie to watchlist:", error);
+          setClickedWatchlist(false);
         });
     } else {
-        axios.delete(`http://localhost:8080/api/users/watchlist/${movie.id}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        })
+      axios
+        .delete(`http://localhost:8080/api/users/watchlist/${movie.id}`, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
-            console.log("Removed movie from watchlist");
-            setClickedWatchlist(false);
-            if (triggerReloadMovies !== undefined) {
-                triggerReloadMovies();
-            }
+          setClickedWatchlist(false);
+          if (triggerReloadMovies) triggerReloadMovies();
         })
         .catch((error) => {
-            console.error("Error removing movie from watchlist:", error);
-            setClickedWatchlist(false);
+          console.error("Error removing movie from watchlist:", error);
+          setClickedWatchlist(false);
         });
     }
   };
 
   const toggleWatched = (event) => {
-      event.stopPropagation();
-    setWatched(!watched);
-      let tmp = !watched;
+    event.stopPropagation();
+    let tmp = !watched;
+    setWatched(tmp);
     setClickedWatched(true);
     if (tmp) {
-        axios.post(
-            `http://localhost:8080/api/users/watched/${movie.id}`,
-            {},
-            {
-                headers: { Authorization: `Bearer ${token}` },
-            }
-        )
+      axios
+        .post(`http://localhost:8080/api/users/watched/${movie.id}`, {}, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
-            console.log("Added movie to watched");
-            setClickedWatched(false);
-            if (triggerReloadMovies !== undefined) {
-                triggerReloadMovies();
-            }
+          setClickedWatched(false);
+          if (triggerReloadMovies) triggerReloadMovies();
         })
         .catch((error) => {
-            console.error("Error adding movie to watched:", error);
-            setClickedWatched(false);
+          console.error("Error adding movie to watched:", error);
+          setClickedWatched(false);
         });
     } else {
-        axios.delete(`http://localhost:8080/api/users/watched/${movie.id}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        })
+      axios
+        .delete(`http://localhost:8080/api/users/watched/${movie.id}`, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
-            console.log("Removed movie from watched");
-            setClickedWatched(false);
-            if (triggerReloadMovies !== undefined) {
-                triggerReloadMovies();
-            }
+          setClickedWatched(false);
+          if (triggerReloadMovies) triggerReloadMovies();
         })
         .catch((error) => {
-            console.error("Error removing movie from watched:", error);
-            setClickedWatched(false);
+          console.error("Error removing movie from watched:", error);
+          setClickedWatched(false);
         });
     }
   };
 
   const handleClick = () => {
-    console.log("Movie clicked:", movie.title);
-    console.log("clickable:", clickable);
-
     if (clickable && !clickedFavorite && !clickedWatchlist && !clickedWatched) {
-      // remove the movie from currently watching
       axios
-        .delete(`http://localhost:8080/api/users/currentlywatching`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((r) => {
-          console.log("Removed movie from currently watching");
+        .delete(`http://localhost:8080/api/users/currentlywatching`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(() => {
           axios
-            .post(
-              `http://localhost:8080/api/users/currentlywatching/${movie.id}`,
-              {},
-              {
-                headers: { Authorization: `Bearer ${token}` },
-              }
-            )
-            .then((response) => {
+            .post(`http://localhost:8080/api/users/currentlywatching/${movie.id}`, {}, { headers: { Authorization: `Bearer ${token}` } })
+            .then(() => {
               navigate("/home");
             })
             .catch((error) => {
               console.error("Error adding movie to currently watching:", error);
             });
         })
-        .catch((e) => {
-          console.error("Error removing movie from currently watching:", e);
+        .catch((error) => {
+          console.error("Error removing movie from currently watching:", error);
         });
-
-      // add movie to currently watching
     }
   };
 
@@ -209,19 +144,28 @@ function MovieBlock(props) {
       <img src={movie.poster_url} alt={movie.title} />
       <div className={styles.movieDetails}>
         <div className={styles.buttons}>
+          <div className={styles.buttonWrapper} onMouseEnter={() => setIsHoveredFavorite(true)} onMouseLeave={() => setIsHoveredFavorite(false)}>
             <button className={styles.button} onClick={(event) => toggleFavorite(event)}>
-                <img src={favorite ? favoritesIconActive : favoritesIcon}/>
+              <img src={favorite ? favoritesIconActive : favoritesIcon} />
             </button>
+            {isHoveredFavorite && <div className={styles.hoverText}>Favorite</div>}
+          </div>
+          <div className={styles.buttonWrapper} onMouseEnter={() => setIsHoveredWatchlist(true)} onMouseLeave={() => setIsHoveredWatchlist(false)}>
             <button className={styles.button} onClick={(event) => toggleWatchlist(event)}>
-                <img src={watchlist ? watchlistIconActive : watchlistIcon}/>
+              <img src={watchlist ? watchlistIconActive : watchlistIcon} />
             </button>
+            {isHoveredWatchlist && <div className={styles.hoverText}>My list</div>}
+          </div>
+          <div className={styles.buttonWrapper} onMouseEnter={() => setIsHoveredWatched(true)} onMouseLeave={() => setIsHoveredWatched(false)}>
             <button className={styles.button} onClick={(event) => toggleWatched(event)}>
-                <img src={watched ? watchedBeforeIconActive : watchedBeforeIcon}/>
+              <img src={watched ? watchedBeforeIconActive : watchedBeforeIcon} />
             </button>
+            {isHoveredWatched && <div className={styles.hoverText}>Already seen</div>}
+          </div>
         </div>
-          <h3>
-              {movie.title} ({movie.yearReleased})
-          </h3>
+        <h3>
+          {movie.title} ({movie.yearReleased})
+        </h3>
         <p>{movie.synopsis}</p>
       </div>
     </div>

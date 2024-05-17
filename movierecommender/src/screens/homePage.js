@@ -24,7 +24,7 @@ function HomePage() {
     let storedToken = null;
 
 
-    const handleSignOut = () => { // Add this function
+    const handleSignOut = () => {
         signOut();
         navigate('/login');
     };
@@ -59,7 +59,6 @@ function HomePage() {
                 setFavoriteMovies(response.data);
             })
             .catch(error => {
-                // console.log(response.data)
                 console.error('Error fetching favorite movies:', error);
             });
 
@@ -73,7 +72,6 @@ function HomePage() {
                 setWatchedMovies(response.data);
             })
             .catch(error => {
-                // console.log(response.data)
                 console.error('Error fetching watched movies:', error);
             });
 
@@ -87,7 +85,6 @@ function HomePage() {
                 setWatchlist(response.data);
             })
             .catch(error => {
-                // console.log(response.data)
                 console.error('Error fetching watched movies:', error);
             });
 
@@ -101,7 +98,6 @@ function HomePage() {
                 setCurrentlyWatching(response.data);
             })
             .catch(error => {
-                // console.log(response.data)
                 console.error('Error fetching watched movies:', error);
             });
 
@@ -114,12 +110,11 @@ function HomePage() {
     }, [reloadMovies, storedToken, token, isValid, decodedToken]);
     return (
         <div>
-            <div className={styles.header}> {/* Add this line */}
+            <div className={styles.header}>
                 <h1 className={styles.h1}>Welcome, {isValid ? (decodedToken.firstName) : ('')}</h1>
                 <PrettyButton className={styles.signOutButton} text='Sign Out' fontSize='12px' color='#A7C7E7'
-                              onClick={handleSignOut}/> {/* Add this line */}
+                              onClick={handleSignOut}/>
             </div>
-            {/* Add this line */}
             <div className={styles.nextMovie}>
                 <PrettyButton text='Find your next movie' fontSize='12px' color='#A7C7E7' onClick={goToEmotionPage}/>
             </div>
@@ -128,7 +123,6 @@ function HomePage() {
                     <h5 className={styles.h5}>Currently watching...</h5>
                     <MovieBlock triggerReloadMovies={triggerReloadMovies} key={currentlyWatching[0].id}
                                 movie={currentlyWatching[0]}/>
-                    {/*<MovieBlock />*/}
         <PrettyButton text='Give feedback' fontSize='12px' color='#A7C7E7' onClick={goToFeedbackPage}/>
         </div>
             )}

@@ -145,7 +145,8 @@ function EmotionsPage() {
       <h1 className={styles.h1}>Tell us how you're feeling</h1>
       <div className={styles.inputField}>
         <TextArea
-          placeholder="A brief detailed description will help us better find a movie that suits you the best."
+          placeholder={
+          "Write in 1-2 sentences how you feel now, and how you want a movie to make you feel. \nA brief but detailed description will help us find a movie that suits you the best. \n \n If you need help, you can use one of the templates below."}
           onChange={handleChange}
           value={prompt}
         />
@@ -158,7 +159,7 @@ function EmotionsPage() {
           onClick={goToCategoriesPage}
         />
       </div>
-      <h3 className={styles.h3}>Suggestions</h3>
+      <h3 className={styles.h3}>Templates:</h3>
 
       <Grid container spacing={1} justifyContent="center">
         <Grid item lg="3" md="6">
