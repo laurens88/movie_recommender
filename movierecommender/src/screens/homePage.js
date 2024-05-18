@@ -4,12 +4,14 @@ import styles from '../styles/homePage.module.css';
 import "../App.css";
 import MovieBlock from "../components/movieBlock";
 import PrettyButton from "../components/prettyButton";
-import { useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {useAuth} from "../contexts/AuthContext";
 import axios from "axios";
+import {CategoriesContext} from "../contexts/CategoriesContext";
 
 function HomePage() {
     console.log('HomePage rendered');
+    let location = useLocation();
 
     let navigate = useNavigate();
     const [favoriteMovies, setFavoriteMovies] = React.useState([]);
@@ -22,7 +24,14 @@ function HomePage() {
 
     const { token, decodedToken, isValid, signOut } = useAuth();
     let storedToken = null;
+    const { categories } = React.useContext(CategoriesContext);
 
+    // let categories = [];
+    //
+    // if(location.state) {
+    //     categories = location.state.categories;
+    //     categories = categories.join(', ');
+    // }
 
     const handleSignOut = () => {
         signOut();
@@ -30,7 +39,7 @@ function HomePage() {
     };
 
     function goToFeedbackPage() {
-        navigate('/feedback', { state: { movieID: currentlyWatching[0].id }});
+        navigate('/feedback', { state: { movieID: currentlyWatching[0].id, categories: categories}});
     }
 
     function goToEmotionPage() {

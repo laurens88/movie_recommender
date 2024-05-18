@@ -12,7 +12,7 @@ import watchedBeforeIconActive from "../watchedbeforeActive.svg";
 
 function MovieBlock(props) {
   const navigate = useNavigate();
-  const { triggerReloadMovies, movie, clickable, fave, list, watch } = props;
+  const { triggerReloadMovies, movie, clickable, fave, list, watch, categories } = props;
   const { token } = useAuth();
 
   const [favorite, setFavorite] = useState(false);
@@ -24,6 +24,7 @@ function MovieBlock(props) {
   const [isHoveredFavorite, setIsHoveredFavorite] = useState(false);
   const [isHoveredWatchlist, setIsHoveredWatchlist] = useState(false);
   const [isHoveredWatched, setIsHoveredWatched] = useState(false);
+
 
   useEffect(() => {
     setFavorite(fave);
@@ -151,7 +152,7 @@ function MovieBlock(props) {
               { headers: { Authorization: `Bearer ${token}` } }
             )
             .then(() => {
-              navigate("/home");
+              navigate("/home", { state: { categories: categories } });
             })
             .catch((error) => {
               console.error("Error adding movie to currently watching:", error);

@@ -9,11 +9,13 @@ import CategoriesPage from './screens/categoriesPage';
 import RecommendationsPage from './screens/recommendationsPage';
 import FeedbackPage from './screens/feedbackPage';
 import {AuthProvider} from "./contexts/AuthContext";
+import {CategoriesProvider} from "./contexts/CategoriesContext";
 
 
 function App() {
   return (
       <AuthProvider>
+          <CategoriesProvider>
     <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -26,6 +28,7 @@ function App() {
           <Route path="/feedback" element={<FeedbackPage />} />
         </Routes>
     </Router>
+          </CategoriesProvider>
         </AuthProvider>
   );
 }

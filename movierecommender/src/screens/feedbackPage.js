@@ -13,6 +13,8 @@ function FeedbackPage() {
     const location = useLocation();
     const movieID = location.state.movieID;
     const { token, decodedToken, isValid } = useAuth();
+    const categories = location.state.categories.join(', ');
+
 
   function submitFeedback() {
       axios
@@ -57,7 +59,7 @@ function FeedbackPage() {
       <h1 className={styles.h1}>Now that you've seen the movie...</h1>
       <h3 className={styles.h3}>Did the movie give you the desired feelings?</h3>
       <PrettySlider />
-      <h3 className={styles.h3}> You chose a [] movie, was that accurate?</h3>
+      <h3 className={styles.h3}> You chose a {categories} movie, was that accurate?</h3>
       <PrettySlider />
       <h3 className={styles.h3}> Was the movie meaningful to you?</h3>
       <PrettySlider />

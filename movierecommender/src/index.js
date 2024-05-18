@@ -8,7 +8,6 @@ import LoginPage from './screens/loginPage';
 const router = createBrowserRouter([
   { path: '/', element: <h1>Home</h1> },
   { path: '/login', element: <LoginPage />},
-
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
